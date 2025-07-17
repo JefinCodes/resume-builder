@@ -1,0 +1,15 @@
+.display-panel{
+  height: 100vh;
+  padding: 20px 0px;
+  border: 1px solid black;
+  overflow-y: auto;
+  flex: 4;
+  display: flex;
+  justify-content: center;
+}
+
+.canvas{
+  width: 794px;
+  height: 1123px;
+  border: 1px solid black;
+}

@@ -30,7 +30,9 @@ function Basics() {
                         <label htmlFor="input-basics-website">Website</label>
                         <input type="url" id="input-basics-website" />
                     </div>
+                    <button id="input-basics-delete-btn" className="input-delete-btn">Delete</button>
                 </div>
+                <button id="input-basics-add-btn" className="input-add-btn">Add Item</button>
             </div>
         </div>
     )
@@ -75,7 +77,9 @@ function Experience() {
                         <label htmlFor="input-experience-summary">Summary</label>
                         <input type="text" id="input-experience-summary" />
                     </div>
+                    <button id="input-experience-delete-btn" className="input-delete-btn">Delete</button>
                 </div>
+                <button id="input-experience-add-btn" className="input-add-btn">Add Item</button>
             </div>
         </div>
     )
@@ -107,7 +111,9 @@ function Projects() {
                         <label htmlFor="input-projects-summary">Summary</label>
                         <input type="text" id="input-projects-summary" />
                     </div>
+                    <button id="input-projects-delete-btn" className="input-delete-btn">Delete</button>
                 </div>
+                <button id="input-projects-add-btn" className="input-add-btn">Add Item</button>
             </div>
         </div>
     )
@@ -121,7 +127,9 @@ function ToolsAndLanguages() {
                 <div className="input-toolsandlanguages-item input-item">
                     <label htmlFor="input-toolsandlanguages-name">Name</label>
                     <input type="text" id="input-toolsandlanguages-name" />
+                    <button id="input-toolsandlanguages-delete-btn" className="input-delete-btn">Delete</button>
                 </div>
+                <button id="input-toolsandlanguages-add-btn" className="input-add-btn">Add Item</button>
             </div>
         </div>
     )
@@ -145,7 +153,9 @@ function Profiles() {
                         <label htmlFor="input-profiles-website">Website</label>
                         <input type="url" id="input-profiles-website" />
                     </div>
+                    <button id="input-profiles-delete-btn" className="input-delete-btn">Delete</button>
                 </div>
+                <button id="input-profiles-add-btn" className="input-add-btn">Add Item</button>
             </div>
         </div>
     )
@@ -185,7 +195,9 @@ function Education() {
                         <label htmlFor="input-education-summary">Summary</label>
                         <input type="text" id="input-education-summary" />
                     </div>
+                    <button id="input-education-delete-btn" className="input-delete-btn">Delete</button>
                 </div>
+                <button id="input-education-add-btn" className="input-add-btn">Add Item</button>
             </div>
         </div>
     )
@@ -217,7 +229,9 @@ function Awards() {
                         <label htmlFor="input-awards-summary">Summary</label>
                         <input type="text" id="input-awards-summary" />
                     </div>
+                    <button id="input-awards-delete-btn" className="input-delete-btn">Delete</button>
                 </div>
+                <button id="input-awards-add-btn" className="input-add-btn">Add Item</button>
             </div>
         </div>
     )
@@ -253,7 +267,9 @@ function Volunteering() {
                         <label htmlFor="input-volunteering-summary">Summary</label>
                         <input type="text" id="input-volunteering-summary" />
                     </div>
+                    <button id="input-volunteering-delete-btn" className="input-delete-btn">Delete</button>
                 </div>
+                <button id="input-volunteering-add-btn" className="input-add-btn">Add Item</button>
             </div>
         </div>
     )

@@ -26,6 +26,12 @@ function Basics({ type }) {
 		})
 	}
 
+	function handleChange(index, key, value){
+		let newItems = [...items];
+		newItems[index][key] = value;
+		setItems(newItems);
+	}
+
 	if (type == "input") {
 		return (
 			<div id="input-basics-container" className="input-containers">
@@ -36,27 +42,39 @@ function Basics({ type }) {
 							<div className="input-basics-item input-item">
 								<div>
 									<label htmlFor="input-basics-name">Name</label>
-									<input type="text" id="input-basics-name" />
+									<input type="text" id="input-basics-name" value={item.name} onChange={(e) => {
+										handleChange(index, 'name', e.target.value);
+									}}/>
 								</div>
 								<div>
 									<label htmlFor="input-basics-headline">Headline</label>
-									<input type="text" id="input-basics-headline" />
+									<input type="text" id="input-basics-headline" value={item.headline} onChange={(e) => {
+										handleChange(index, 'headline', e.target.value);
+									}}/>
 								</div>
 								<div>
 									<label htmlFor="input-basics-location">Location</label>
-									<input type="text" id="input-basics-location" />
+									<input type="text" id="input-basics-location" value={item.location} onChange={(e) => {
+										handleChange(index, 'location', e.target.value);
+									}}/>
 								</div>
 								<div>
 									<label htmlFor="input-basics-phone">Phone</label>
-									<input type="number" id="input-basics-phone" />
+									<input type="number" id="input-basics-phone" value={item.phone} onChange={(e) => {
+										handleChange(index, 'phone', e.target.value);
+									}}/>
 								</div>
 								<div>
 									<label htmlFor="input-basics-email">Email</label>
-									<input type="email" id="input-basics-email" />
+									<input type="email" id="input-basics-email" value={item.email} onChange={(e) => {
+										handleChange(index, 'email', e.target.value);
+									}}/>
 								</div>
 								<div>
 									<label htmlFor="input-basics-website">Website</label>
-									<input type="url" id="input-basics-website" />
+									<input type="url" id="input-basics-website" value={item.website} onChange={(e) => {
+										handleChange(index, 'website', e.target.value);
+									}}/>
 								</div>
 								<button className="input-delete-btn">Delete</button>
 							</div>

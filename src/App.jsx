@@ -32,6 +32,11 @@ function Basics({ type }) {
 		setItems(newItems);
 	}
 
+	function removeItem(index){
+		const newItems = items.filter((item, i) => i != index);
+		setItems(newItems);
+	}
+
 	if (type == "input") {
 		return (
 			<div id="input-basics-container" className="input-containers">
@@ -76,7 +81,9 @@ function Basics({ type }) {
 										handleChange(index, 'website', e.target.value);
 									}}/>
 								</div>
-								<button className="input-delete-btn">Delete</button>
+								<button className="input-delete-btn" onClick={() => {
+									removeItem(index);
+								}}>Delete</button>
 							</div>
 						)
 					})}
@@ -137,6 +144,11 @@ function Experience({ type }) {
 		setItems(newItems);
 	}
 
+	function removeItem(index){
+		const newItems = items.filter((item, i) => i != index);
+		setItems(newItems);
+	}
+
 	if (type == "input") {
 		return (
 			<div id="input-experience-container" className="input-containers">
@@ -181,7 +193,9 @@ function Experience({ type }) {
 										handleChange(index, 'summary', e.target.value);
 									}}/>
 								</div>
-								<button id="input-experience-delete-btn" className="input-delete-btn">Delete</button>
+								<button id="input-experience-delete-btn" className="input-delete-btn" onClick={() => {
+									removeItem(index);
+								}}>Delete</button>
 							</div>
 						)
 					})}
@@ -218,6 +232,11 @@ function Projects({ type }) {
 	function handleChange(index, key, value){
 		let newItems = [...items];
 		newItems[index][key] = value;
+		setItems(newItems);
+	}
+
+	function removeItem(index){
+		const newItems = items.filter((item, i) => i != index);
 		setItems(newItems);
 	}
 
@@ -259,7 +278,9 @@ function Projects({ type }) {
 										handleChange(index, 'summary', e.target.value);
 									}}/>
 								</div>
-								<button id="input-projects-delete-btn" className="input-delete-btn">Delete</button>
+								<button id="input-projects-delete-btn" className="input-delete-btn" onClick={() => {
+									removeItem(index);
+								}}>Delete</button>
 							</div>
 						)
 					})}
@@ -291,6 +312,11 @@ function ToolsAndLanguages({ type }) {
 		setItems(newItems);
 	}
 
+	function removeItem(index){
+		const newItems = items.filter((item, i) => i != index);
+		setItems(newItems);
+	}
+
 	if (type == "input") {
 		return (
 			<div id="input-toolsandlanguages-container" className="input-containers">
@@ -303,7 +329,9 @@ function ToolsAndLanguages({ type }) {
 								<input type="text" id="input-toolsandlanguages-name" value={item.name} onChange={(e) => {
 									handleChange(index, 'name', e.target.value);
 								}}/>
-								<button id="input-toolsandlanguages-delete-btn" className="input-delete-btn">Delete</button>
+								<button id="input-toolsandlanguages-delete-btn" className="input-delete-btn" onClick={() => {
+									removeItem(index);
+								}}>Delete</button>
 							</div>
 						)
 					})}
@@ -339,6 +367,11 @@ function Profiles({ type }) {
 		setItems(newItems);
 	}
 
+	function removeItem(index){
+		const newItems = items.filter((item, i) => i != index);
+		setItems(newItems);
+	}
+
 	if (type == "input") {
 		return (
 			<div id="input-profiles-container" className="input-containers">
@@ -365,7 +398,9 @@ function Profiles({ type }) {
 										handleChange(index, 'website', e.target.value);
 									}}/>
 								</div>
-								<button id="input-profiles-delete-btn" className="input-delete-btn">Delete</button>
+								<button id="input-profiles-delete-btn" className="input-delete-btn" onClick={() => {
+									removeItem(index);
+								}}>Delete</button>
 							</div>
 						)
 					})}
@@ -406,6 +441,11 @@ function Education({ type }) {
 	function handleChange(index, key, value){
 		let newItems = [...items];
 		newItems[index][key] = value;
+		setItems(newItems);
+	}
+
+	function removeItem(index){
+		const newItems = items.filter((item, i) => i != index);
 		setItems(newItems);
 	}
 
@@ -459,7 +499,9 @@ function Education({ type }) {
 										handleChange(index, 'summary', e.target.value);
 									}}/>
 								</div>
-								<button id="input-education-delete-btn" className="input-delete-btn">Delete</button>
+								<button id="input-education-delete-btn" className="input-delete-btn" onClick={() => {
+									removeItem(index);
+								}}>Delete</button>
 							</div>
 						)
 					})}
@@ -496,6 +538,11 @@ function Awards({ type }) {
 	function handleChange(index, key, value){
 		let newItems = [...items];
 		newItems[index][key] = value;
+		setItems(newItems);
+	}
+
+	function removeItem(index){
+		const newItems = items.filter((item, i) => i != index);
 		setItems(newItems);
 	}
 
@@ -537,7 +584,9 @@ function Awards({ type }) {
 										handleChange(index, 'summary', e.target.value);
 									}}/>
 								</div>
-								<button id="input-awards-delete-btn" className="input-delete-btn">Delete</button>
+								<button id="input-awards-delete-btn" className="input-delete-btn" onClick={() => {
+									removeItem(index);
+								}}>Delete</button>
 							</div>
 						)
 					})}
@@ -576,6 +625,11 @@ function Volunteering({ type }) {
 	function handleChange(index, key, value){
 		let newItems = [...items];
 		newItems[index][key] = value;
+		setItems(newItems);
+	}
+
+	function removeItem(index){
+		const newItems = items.filter((item, i) => i != index);
 		setItems(newItems);
 	}
 
@@ -623,7 +677,9 @@ function Volunteering({ type }) {
 										handleChange(index, 'summary', e.target.value);
 									}}/>
 								</div>
-								<button id="input-volunteering-delete-btn" className="input-delete-btn">Delete</button>
+								<button id="input-volunteering-delete-btn" className="input-delete-btn" onClick={() => {
+									removeItem(index);
+								}}>Delete</button>
 							</div>
 						)
 					})}

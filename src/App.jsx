@@ -2,15 +2,28 @@ import { useState } from 'react'
 import './App.css'
 
 function Basics({ type }) {
-	const [ items, setItems ] = useState(["Default"])
+	const [ items, setItems ] = useState([
+		{
+			name: "",
+			headline: "",
+			location: "",
+			phone: "",
+			email: "",
+			website: "",
+		}
+	])
 
 	function addItem(){
-		const itemNameInput = document.querySelector('#input-basics-item-name-input')
-		const itemName = itemNameInput.value
 		setItems((prev) => {
-			return [...prev, itemName]
+			return [...prev, {
+				name: "",
+				headline: "",
+				location: "",
+				phone: "",
+				email: "",
+				website: "",
+			}]
 		})
-		itemNameInput.value = ""
 	}
 
 	if (type == "input") {
@@ -18,40 +31,38 @@ function Basics({ type }) {
 			<div id="input-basics-container" className="input-containers">
 				<h2>Basics</h2>
 				<div id="input-basics-itembox" className="input-itembox">
-					{items.map((itemName) => {
+					{items.map((item, index) => {
 						return(
-							<div key={itemName} className="input-basics-item input-item">
-								<h3>{itemName}</h3>
+							<div className="input-basics-item input-item">
 								<div>
-									<label htmlFor={"input-basics-name-" + itemName}>Name</label>
-									<input type="text" id={"input-basics-name-" + itemName} />
+									<label htmlFor="input-basics-name">Name</label>
+									<input type="text" id="input-basics-name" />
 								</div>
 								<div>
-									<label htmlFor={"input-basics-headline-" + itemName}>Headline</label>
-									<input type="text" id={"input-basics-headline-" + itemName} />
+									<label htmlFor="input-basics-headline">Headline</label>
+									<input type="text" id="input-basics-headline" />
 								</div>
 								<div>
-									<label htmlFor={"input-basics-location-" + itemName}>Location</label>
-									<input type="text" id={"input-basics-location-" + itemName} />
+									<label htmlFor="input-basics-location">Location</label>
+									<input type="text" id="input-basics-location" />
 								</div>
 								<div>
-									<label htmlFor={"input-basics-phone-" + itemName}>Phone</label>
-									<input type="number" id={"input-basics-phone-" + itemName} />
+									<label htmlFor="input-basics-phone">Phone</label>
+									<input type="number" id="input-basics-phone" />
 								</div>
 								<div>
-									<label htmlFor={"input-basics-email-" + itemName}>Email</label>
-									<input type="email" id={"input-basics-email-" + itemName} />
+									<label htmlFor="input-basics-email">Email</label>
+									<input type="email" id="input-basics-email" />
 								</div>
 								<div>
-									<label htmlFor={"input-basics-website-" + itemName}>Website</label>
-									<input type="url" id={"input-basics-website-" + itemName} />
+									<label htmlFor="input-basics-website">Website</label>
+									<input type="url" id="input-basics-website" />
 								</div>
-								<button id={"input-basics-delete-btn-" + itemName} className="input-delete-btn">Delete</button>
+								<button className="input-delete-btn">Delete</button>
 							</div>
 						)
 					})}
-					<input type="text" id="input-basics-item-name-input" />
-					<button id="input-basics-add-btn" className="input-add-btn" onClick={addItem}>Add Item</button>
+					<button className="input-add-btn" onClick={addItem}>Add Item</button>
 				</div>
 			</div>
 		)

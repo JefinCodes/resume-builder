@@ -3,7 +3,7 @@ import './App.css'
 
 function BasicsInput({ item, setItem }) {
 	function handleChange(key, value) {
-		let newItem = [...item];
+		let newItem = {...item};
 		newItem[key] = value;
 		setItem(newItem);
 	}

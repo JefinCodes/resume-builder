@@ -92,3 +92,14 @@
 	display: flex;
 	justify-content: space-between;
 }
+
+.dispay-projects-conatiner{
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.dispay-projects-name-date-container{
+	display: flex;
+	justify-content: space-between;
+}

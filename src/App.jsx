@@ -617,6 +617,30 @@ function ExperienceDisplay({ items }){
 	)
 }
 
+function ProjectsDisplay({ items }){
+	return(
+		<div>
+			{items.length > 0 && <h4>Projects</h4>}
+			{items.length > 0 && <hr />}
+			<div className="dispay-projects-conatiner">
+				{items.map((item) => {
+					return(
+						<div>
+							<div className="dispay-projects-name-date-container">
+								<h3>{item.name}</h3>
+								<h3>{item.daterange}</h3>
+							</div>
+							<div>{item.description}</div>
+							<div>{item.website}</div>
+							<div>{item.summary}</div>
+						</div>
+					)
+				})}
+			</div>
+		</div>
+	)
+}
+
 function App() {
 	const [basics, setBasics] = useState([
 		{
@@ -718,6 +742,7 @@ function App() {
 					<BasicsDisplay item={basics} />
 					<SummaryDisplay summary={summary} />
 					<ExperienceDisplay items={experienceItems} />
+					<ProjectsDisplay items={projectsItems} />
 				</div>
 			</div>
 		</div>

@@ -77,3 +77,18 @@
 	display: flex;
 	gap: 15px;
 }
+
+.dispay-experience-conatiner{
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.dispay-experience-company-date-container{
+	display: flex;
+	justify-content: space-between;
+}
+.dispay-experience-position-location-container{
+	display: flex;
+	justify-content: space-between;
+}

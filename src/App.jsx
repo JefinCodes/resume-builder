@@ -590,6 +590,33 @@ function SummaryDisplay({ summary }){
 	)
 }
 
+function ExperienceDisplay({ items }){
+	return(
+		<div>
+			{items.length > 0 && <h4>Experience</h4>}
+			{items.length > 0 && <hr />}
+			<div className="dispay-experience-conatiner">
+				{items.map((item) => {
+					return(
+						<div>
+							<div className="dispay-experience-company-date-container">
+								<h3>{item.company}</h3>
+								<h3>{item.daterange}</h3>
+							</div>
+							<div className="dispay-experience-position-location-container">
+								<div>{item.position}</div>
+								<div>{item.location}</div>
+							</div>
+							<div>{item.website}</div>
+							<div>{item.summary}</div>
+						</div>
+					)
+				})}
+			</div>
+		</div>
+	)
+}
+
 function App() {
 	const [basics, setBasics] = useState([
 		{
@@ -690,6 +717,7 @@ function App() {
 				<div className="canvas">
 					<BasicsDisplay item={basics} />
 					<SummaryDisplay summary={summary} />
+					<ExperienceDisplay items={experienceItems} />
 				</div>
 			</div>
 		</div>

@@ -580,6 +580,16 @@ function BasicsDisplay({ item }){
 	)
 }
 
+function SummaryDisplay({ summary }){
+	return(
+		<div>
+			{summary && <h4>Summary</h4>}
+			{summary && <hr />}
+			{summary}
+		</div>
+	)
+}
+
 function App() {
 	const [basics, setBasics] = useState([
 		{
@@ -679,6 +689,7 @@ function App() {
 			<div className="display-panel">
 				<div className="canvas">
 					<BasicsDisplay item={basics} />
+					<SummaryDisplay summary={summary} />
 				</div>
 			</div>
 		</div>

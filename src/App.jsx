@@ -595,15 +595,15 @@ function ExperienceDisplay({ items }){
 		<div>
 			{items.length > 0 && <h4>Experience</h4>}
 			{items.length > 0 && <hr />}
-			<div className="dispay-experience-conatiner">
+			<div className="dispay-item-conatiner">
 				{items.map((item) => {
 					return(
 						<div>
-							<div className="dispay-experience-company-date-container">
+							<div className="dispay-item-subcontainer-spacebetween">
 								<h3>{item.company}</h3>
 								<h3>{item.daterange}</h3>
 							</div>
-							<div className="dispay-experience-position-location-container">
+							<div className="dispay-item-subcontainer-spacebetween">
 								<div>{item.position}</div>
 								<div>{item.location}</div>
 							</div>
@@ -622,11 +622,11 @@ function ProjectsDisplay({ items }){
 		<div>
 			{items.length > 0 && <h4>Projects</h4>}
 			{items.length > 0 && <hr />}
-			<div className="dispay-projects-conatiner">
+			<div className="dispay-item-conatiner">
 				{items.map((item) => {
 					return(
 						<div>
-							<div className="dispay-projects-name-date-container">
+							<div className="dispay-item-subcontainer-spacebetween">
 								<h3>{item.name}</h3>
 								<h3>{item.daterange}</h3>
 							</div>

@@ -78,28 +78,13 @@
 	gap: 15px;
 }
 
-.dispay-experience-conatiner{
+.dispay-item-conatiner{
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
 }
 
-.dispay-experience-company-date-container{
-	display: flex;
-	justify-content: space-between;
-}
-.dispay-experience-position-location-container{
-	display: flex;
-	justify-content: space-between;
-}
-
-.dispay-projects-conatiner{
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
-}
-
-.dispay-projects-name-date-container{
+.dispay-item-subcontainer-spacebetween{
 	display: flex;
 	justify-content: space-between;
 }

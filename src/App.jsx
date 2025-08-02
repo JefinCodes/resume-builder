@@ -1,81 +1,55 @@
 import { useState } from 'react'
 import './App.css'
 
-function BasicsInput({ items, setItems }) {
-	function addItem() {
-		setItems((prev) => {
-			return [...prev, {
-				name: "",
-				headline: "",
-				location: "",
-				phone: "",
-				email: "",
-				website: "",
-			}]
-		})
-	}
-
-	function handleChange(index, key, value) {
-		let newItems = [...items];
-		newItems[index][key] = value;
-		setItems(newItems);
-	}
-
-	function removeItem(index) {
-		const newItems = items.filter((item, i) => i != index);
-		setItems(newItems);
+function BasicsInput({ item, setItem }) {
+	function handleChange(key, value) {
+		let newItem = [...item];
+		newItem[key] = value;
+		setItem(newItem);
 	}
 
 	return (
 		<div id="input-basics-container" className="input-containers">
 			<h2>Basics</h2>
 			<div id="input-basics-itembox" className="input-itembox">
-				{items.map((item, index) => {
-					return (
-						<div className="input-basics-item input-item">
-							<div>
-								<label htmlFor="input-basics-name">Name</label>
-								<input type="text" id="input-basics-name" value={item.name} onChange={(e) => {
-									handleChange(index, 'name', e.target.value);
-								}} />
-							</div>
-							<div>
-								<label htmlFor="input-basics-headline">Headline</label>
-								<input type="text" id="input-basics-headline" value={item.headline} onChange={(e) => {
-									handleChange(index, 'headline', e.target.value);
-								}} />
-							</div>
-							<div>
-								<label htmlFor="input-basics-location">Location</label>
-								<input type="text" id="input-basics-location" value={item.location} onChange={(e) => {
-									handleChange(index, 'location', e.target.value);
-								}} />
-							</div>
-							<div>
-								<label htmlFor="input-basics-phone">Phone</label>
-								<input type="number" id="input-basics-phone" value={item.phone} onChange={(e) => {
-									handleChange(index, 'phone', e.target.value);
-								}} />
-							</div>
-							<div>
-								<label htmlFor="input-basics-email">Email</label>
-								<input type="email" id="input-basics-email" value={item.email} onChange={(e) => {
-									handleChange(index, 'email', e.target.value);
-								}} />
-							</div>
-							<div>
-								<label htmlFor="input-basics-website">Website</label>
-								<input type="url" id="input-basics-website" value={item.website} onChange={(e) => {
-									handleChange(index, 'website', e.target.value);
-								}} />
-							</div>
-							<button className="input-delete-btn" onClick={() => {
-								removeItem(index);
-							}}>Delete</button>
-						</div>
-					)
-				})}
-				<button className="input-add-btn" onClick={addItem}>Add Item</button>
+				<div className="input-basics-item input-item">
+					<div>
+						<label htmlFor="input-basics-name">Name</label>
+						<input type="text" id="input-basics-name" value={item.name} onChange={(e) => {
+							handleChange('name', e.target.value);
+						}} />
+					</div>
+					<div>
+						<label htmlFor="input-basics-headline">Headline</label>
+						<input type="text" id="input-basics-headline" value={item.headline} onChange={(e) => {
+							handleChange('headline', e.target.value);
+						}} />
+					</div>
+					<div>
+						<label htmlFor="input-basics-location">Location</label>
+						<input type="text" id="input-basics-location" value={item.location} onChange={(e) => {
+							handleChange('location', e.target.value);
+						}} />
+					</div>
+					<div>
+						<label htmlFor="input-basics-phone">Phone</label>
+						<input type="number" id="input-basics-phone" value={item.phone} onChange={(e) => {
+							handleChange('phone', e.target.value);
+						}} />
+					</div>
+					<div>
+						<label htmlFor="input-basics-email">Email</label>
+						<input type="email" id="input-basics-email" value={item.email} onChange={(e) => {
+							handleChange('email', e.target.value);
+						}} />
+					</div>
+					<div>
+						<label htmlFor="input-basics-website">Website</label>
+						<input type="url" id="input-basics-website" value={item.website} onChange={(e) => {
+							handleChange('website', e.target.value);
+						}} />
+					</div>
+				</div>
 			</div>
 		</div>
 	)
@@ -592,7 +566,7 @@ function VolunteeringInput({ items, setItems }) {
 }
 
 function App() {
-	const [basicsItems, setBasicsItems] = useState([
+	const [basics, setBasics] = useState([
 		{
 			name: "",
 			headline: "",
@@ -677,7 +651,7 @@ function App() {
 	return (
 		<div className="application">
 			<div className="input-panel">
-				<BasicsInput items={basicsItems} setItems={setBasicsItems} />
+				<BasicsInput item={basics} setItem={setBasics} />
 				<SummaryInput items={summary} setItems={setSummary} />
 				<ExperienceInput items={experienceItems} setItems={setExperienceItems} />
 				<ProjectsInput items={projectsItems} setItems={setProjectsItems} />

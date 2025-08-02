@@ -570,7 +570,7 @@ function BasicsDisplay({ item }){
 		<>
 			<h2>{item.name}</h2>
 			<div>{item.headline}</div>
-			<div class="flex-g15">
+			<div class="dispay-basics-flexconatiner">
 				<div>{item.location}</div>
 				<div>{item.phone}</div>
 				<div>{item.email}</div>

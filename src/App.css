@@ -70,7 +70,7 @@
 	border: 1px solid black;
 }
 
-.flex-g15{
+.dispay-basics-flexconatiner{
 	display: flex;
 	gap: 15px;
 }

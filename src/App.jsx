@@ -567,7 +567,7 @@ function VolunteeringInput({ items, setItems }) {
 
 function BasicsDisplay({ item }){
 	return(
-		<>
+		<div>
 			<h2>{item.name}</h2>
 			<div>{item.headline}</div>
 			<div class="dispay-basics-flexconatiner">
@@ -576,7 +576,7 @@ function BasicsDisplay({ item }){
 				<div>{item.email}</div>
 				<div>{item.website}</div>
 			</div>
-		</>
+		</div>
 	)
 }
 

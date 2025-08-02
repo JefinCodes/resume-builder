@@ -565,6 +565,21 @@ function VolunteeringInput({ items, setItems }) {
 	)
 }
 
+function BasicsDisplay({ item }){
+	return(
+		<>
+			<h2>{item.name}</h2>
+			<div>{item.headline}</div>
+			<div class="flex-g15">
+				<div>{item.location}</div>
+				<div>{item.phone}</div>
+				<div>{item.email}</div>
+				<div>{item.website}</div>
+			</div>
+		</>
+	)
+}
+
 function App() {
 	const [basics, setBasics] = useState([
 		{
@@ -663,7 +678,7 @@ function App() {
 			</div>
 			<div className="display-panel">
 				<div className="canvas">
-
+					<BasicsDisplay item={basics} />
 				</div>
 			</div>
 		</div>

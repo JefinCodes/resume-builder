@@ -66,5 +66,11 @@
 .canvas {
 	width: 794px;
 	height: 1123px;
+	padding: 20px;
 	border: 1px solid black;
+}
+
+.flex-g15{
+	display: flex;
+	gap: 15px;
 }

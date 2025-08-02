@@ -652,7 +652,7 @@ function App() {
 		<div className="application">
 			<div className="input-panel">
 				<BasicsInput item={basics} setItem={setBasics} />
-				<SummaryInput items={summary} setItems={setSummary} />
+				<SummaryInput summary={summary} setSummary={setSummary} />
 				<ExperienceInput items={experienceItems} setItems={setExperienceItems} />
 				<ProjectsInput items={projectsItems} setItems={setProjectsItems} />
 				<ToolsAndLanguagesInput items={toolsAndLanguagesItems} setItems={setToolsAndLanguagesItems} />

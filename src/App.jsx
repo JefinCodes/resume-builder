@@ -641,6 +641,33 @@ function ProjectsDisplay({ items }){
 	)
 }
 
+function VolunteeringDisplay({ items }){
+	return(
+		<div>
+			{items.length > 0 && <h4>Volunteering</h4>}
+			{items.length > 0 && <hr />}
+			<div className="dispay-item-conatiner">
+				{items.map((item) => {
+					return(
+						<div>
+							<div className="dispay-item-subcontainer-spacebetween">
+								<h3>{item.organization}</h3>
+								<h3>{item.daterange}</h3>
+							</div>
+							<div className="dispay-item-subcontainer-spacebetween">
+								<div>{item.position}</div>
+								<div>{item.location}</div>
+							</div>
+							<div>{item.website}</div>
+							<div>{item.summary}</div>
+						</div>
+					)
+				})}
+			</div>
+		</div>
+	)
+}
+
 function App() {
 	const [basics, setBasics] = useState([
 		{
@@ -743,6 +770,7 @@ function App() {
 					<SummaryDisplay summary={summary} />
 					<ExperienceDisplay items={experienceItems} />
 					<ProjectsDisplay items={projectsItems} />
+					<VolunteeringDisplay items={volunteeringItems} />
 				</div>
 			</div>
 		</div>

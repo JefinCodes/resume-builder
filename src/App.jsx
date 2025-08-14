@@ -668,7 +668,7 @@ function ProfilesDisplay({ items }){
 				{items.map((item) => {
 					return(
 						<div className="dispay-profiles-subcontainer-item">
-							<div><u>{item.network}{item.username && <span>(</span>}{item.username}{item.username && <span>)</span>}</u></div>
+							{item.network}{item.username && <span>(</span>}{item.username}{item.username && <span>)</span>}
 						</div>
 					)
 				})}

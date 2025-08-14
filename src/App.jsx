@@ -659,6 +659,31 @@ function ToolsAndLanguagesDisplay({ items }){
 	)
 }
 
+function EducationDisplay({ items }){
+	return(
+		<div>
+			{items.length > 0 && <h4>Education</h4>}
+			{items.length > 0 && <hr />}
+			<div className="dispay-item-conatiner">
+				{items.map((item) => {
+					return(
+						<div>
+							<div className="dispay-item-subcontainer-spacebetween">
+								<h3>{item.institution}</h3>
+								<h3>{item.daterange}</h3>
+							</div>
+							<div>{item.typeofstudy} {item.typeofstudy && item.areaofstudy && <span>-</span>} {item.areaofstudy}</div>
+							<div>{item.score}</div>
+							<div>{item.website}</div>
+							<div>{item.summary}</div>
+						</div>
+					)
+				})}
+			</div>
+		</div>
+	)
+}
+
 function AwardsDisplay({ items }){
 	return(
 		<div>
@@ -813,6 +838,7 @@ function App() {
 					<ExperienceDisplay items={experienceItems} />
 					<ProjectsDisplay items={projectsItems} />
 					<ToolsAndLanguagesDisplay items={toolsAndLanguagesItems} />
+					<EducationDisplay items={educationItems} />
 					<AwardsDisplay items={awardItems} />
 					<VolunteeringDisplay items={volunteeringItems} />
 				</div>

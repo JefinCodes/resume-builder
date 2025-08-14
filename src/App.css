@@ -1,3 +1,11 @@
+a,
+a:visited,
+a:hover,
+a:active{
+	color: inherit;
+	text-decoration: underline;
+}
+
 .application {
 	width: 100%;
 	display: flex;
@@ -66,5 +74,47 @@
 .canvas {
 	width: 794px;
 	height: 1123px;
+	padding: 20px;
 	border: 1px solid black;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.dispay-basics-flexconatiner{
+	display: flex;
+	gap: 15px;
+}
+
+.dispay-item-conatiner{
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.dispay-item-subcontainer-spacebetween{
+	display: flex;
+	justify-content: space-between;
+}
+
+.dispay-toolsandlanguages-conatiner{
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.dispay-toolsandlanguages-subcontainer-item{
+	width: 25%;
+	padding: 2px 0px;
+}
+
+.dispay-profiles-conatiner{
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.dispay-profiles-subcontainer-item{
+	width: 33%;
+	padding: 2px 0px;
 }

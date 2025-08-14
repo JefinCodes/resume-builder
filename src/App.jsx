@@ -659,6 +659,30 @@ function ToolsAndLanguagesDisplay({ items }){
 	)
 }
 
+function AwardsDisplay({ items }){
+	return(
+		<div>
+			{items.length > 0 && <h4>Awards</h4>}
+			{items.length > 0 && <hr />}
+			<div className="dispay-item-conatiner">
+				{items.map((item) => {
+					return(
+						<div>
+							<div className="dispay-item-subcontainer-spacebetween">
+								<h3>{item.title}</h3>
+								<h3>{item.date}</h3>
+							</div>
+							<div>{item.awarder}</div>
+							<div>{item.website}</div>
+							<div>{item.summary}</div>
+						</div>
+					)
+				})}
+			</div>
+		</div>
+	)
+}
+
 function VolunteeringDisplay({ items }){
 	return(
 		<div>
@@ -789,6 +813,7 @@ function App() {
 					<ExperienceDisplay items={experienceItems} />
 					<ProjectsDisplay items={projectsItems} />
 					<ToolsAndLanguagesDisplay items={toolsAndLanguagesItems} />
+					<AwardsDisplay items={awardItems} />
 					<VolunteeringDisplay items={volunteeringItems} />
 				</div>
 			</div>

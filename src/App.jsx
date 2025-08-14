@@ -641,6 +641,24 @@ function ProjectsDisplay({ items }){
 	)
 }
 
+function ToolsAndLanguagesDisplay({ items }){
+	return(
+		<div>
+			{items.length > 0 && <h4>Tools & Languages</h4>}
+			{items.length > 0 && <hr />}
+			<div className="dispay-toolsandlanguages-conatiner">
+				{items.map((item) => {
+					return(
+						<div className="dispay-toolsandlanguages-subcontainer-item">
+							{item.name}
+						</div>
+					)
+				})}
+			</div>
+		</div>
+	)
+}
+
 function VolunteeringDisplay({ items }){
 	return(
 		<div>
@@ -770,6 +788,7 @@ function App() {
 					<SummaryDisplay summary={summary} />
 					<ExperienceDisplay items={experienceItems} />
 					<ProjectsDisplay items={projectsItems} />
+					<ToolsAndLanguagesDisplay items={toolsAndLanguagesItems} />
 					<VolunteeringDisplay items={volunteeringItems} />
 				</div>
 			</div>

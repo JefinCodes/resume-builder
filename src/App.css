@@ -1,3 +1,11 @@
+a,
+a:visited,
+a:hover,
+a:active{
+	color: inherit;
+	text-decoration: underline;
+}
+
 .application {
 	width: 100%;
 	display: flex;

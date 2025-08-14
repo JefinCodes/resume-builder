@@ -574,7 +574,7 @@ function BasicsDisplay({ item }){
 				<div>{item.location}</div>
 				<div>{item.phone}</div>
 				<div>{item.email}</div>
-				<div>{item.website}</div>
+				<div><a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></div>
 			</div>
 		</div>
 	)
@@ -607,7 +607,7 @@ function ExperienceDisplay({ items }){
 								<div>{item.position}</div>
 								<div>{item.location}</div>
 							</div>
-							<div>{item.website}</div>
+							<div><a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></div>
 							<div>{item.summary}</div>
 						</div>
 					)
@@ -631,7 +631,7 @@ function ProjectsDisplay({ items }){
 								<h3>{item.daterange}</h3>
 							</div>
 							<div>{item.description}</div>
-							<div>{item.website}</div>
+							<div><a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></div>
 							<div>{item.summary}</div>
 						</div>
 					)
@@ -668,7 +668,7 @@ function ProfilesDisplay({ items }){
 				{items.map((item) => {
 					return(
 						<div className="dispay-profiles-subcontainer-item">
-							{item.network}{item.username && <span>(</span>}{item.username}{item.username && <span>)</span>}
+							<a href={item.website} target="_blank" rel="noopener noreferrer">{item.network}{item.username && <span>(</span>}{item.username}{item.username && <span>)</span>}</a>
 						</div>
 					)
 				})}
@@ -692,7 +692,7 @@ function EducationDisplay({ items }){
 							</div>
 							<div>{item.typeofstudy} {item.typeofstudy && item.areaofstudy && <span>-</span>} {item.areaofstudy}</div>
 							<div>{item.score}</div>
-							<div>{item.website}</div>
+							<div><a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></div>
 							<div>{item.summary}</div>
 						</div>
 					)
@@ -716,7 +716,7 @@ function AwardsDisplay({ items }){
 								<h3>{item.date}</h3>
 							</div>
 							<div>{item.awarder}</div>
-							<div>{item.website}</div>
+							<div><a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></div>
 							<div>{item.summary}</div>
 						</div>
 					)
@@ -743,7 +743,7 @@ function VolunteeringDisplay({ items }){
 								<div>{item.position}</div>
 								<div>{item.location}</div>
 							</div>
-							<div>{item.website}</div>
+							<div><a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></div>
 							<div>{item.summary}</div>
 						</div>
 					)

@@ -99,3 +99,14 @@
 	width: 25%;
 	padding: 2px 0px;
 }
+
+.dispay-profiles-conatiner{
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.dispay-profiles-subcontainer-item{
+	width: 33%;
+	padding: 2px 0px;
+}

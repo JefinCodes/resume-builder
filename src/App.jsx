@@ -659,6 +659,24 @@ function ToolsAndLanguagesDisplay({ items }){
 	)
 }
 
+function ProfilesDisplay({ items }){
+	return(
+		<div>
+			{items.length > 0 && <h4>Profiles</h4>}
+			{items.length > 0 && <hr />}
+			<div className="dispay-profiles-conatiner">
+				{items.map((item) => {
+					return(
+						<div className="dispay-profiles-subcontainer-item">
+							<div><u>{item.network}{item.username && <span>(</span>}{item.username}{item.username && <span>)</span>}</u></div>
+						</div>
+					)
+				})}
+			</div>
+		</div>
+	)
+}
+
 function EducationDisplay({ items }){
 	return(
 		<div>
@@ -838,6 +856,7 @@ function App() {
 					<ExperienceDisplay items={experienceItems} />
 					<ProjectsDisplay items={projectsItems} />
 					<ToolsAndLanguagesDisplay items={toolsAndLanguagesItems} />
+					<ProfilesDisplay items={profilesItems} />
 					<EducationDisplay items={educationItems} />
 					<AwardsDisplay items={awardItems} />
 					<VolunteeringDisplay items={volunteeringItems} />

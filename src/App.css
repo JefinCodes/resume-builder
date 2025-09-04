@@ -67,14 +67,14 @@ input {
 
 .input-delete-btn {
 	color: white;
-	background-color: rgb(236, 62, 62);
+	background-color: #ef4444;
 	border: none;
 	display: block;
 }
 
 .input-add-btn {
 	color: white;
-	background-color: rgb(2, 128, 2);
+	background-color: #22c55e;
 	border: none;
 	display: block;
 }

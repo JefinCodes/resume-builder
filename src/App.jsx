@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import { Page, Text, View, Document, StyleSheet, PDFDownloadLink } from "@react-pdf/renderer"
 
 function BasicsInput({ item, setItem }) {
 	function handleChange(key, value) {
@@ -753,6 +754,16 @@ function VolunteeringDisplay({ items }){
 	)
 }
 
+const MyResume = () => (
+	<Document>
+		<Page>
+			<View>
+				<Text>Name</Text>
+			</View>
+		</Page>
+	</Document>
+)
+
 function App() {
 	const [basics, setBasics] = useState([
 		{
@@ -848,6 +859,11 @@ function App() {
 				<EducationInput items={educationItems} setItems={setEducationItems} />
 				<AwardsInput items={awardItems} setItems={setAwardItems} />
 				<VolunteeringInput items={volunteeringItems} setItems={setVolunteeringItems} />
+				<button id="download-button">
+					<PDFDownloadLink document={<MyResume />} fileName="resume.pdf">
+						{({ loading }) => (loading? "Loading document...":"Download Resume")}
+					</PDFDownloadLink>
+				</button>
 			</div>
 			<div className="display-panel">
 				<div className="canvas">

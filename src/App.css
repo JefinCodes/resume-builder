@@ -32,7 +32,8 @@ a:active{
 .input-containers {
 	width: 100%;
 	padding: 20px;
-	border: 1px solid rgb(88, 85, 85);
+	border: 3px solid white;
+	border-radius: 8px;
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
@@ -40,7 +41,8 @@ a:active{
 
 .input-itembox {
 	padding: 10px;
-	border: 1px solid rgb(138, 135, 135);
+	border: 2px solid white;
+	border-radius: 8px;
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
@@ -48,7 +50,8 @@ a:active{
 
 .input-item {
 	padding: 5px;
-	border: 1px solid rgb(182, 180, 180);
+	border: 1px solid white;
+	border-radius: 8px;
 	display: flex;
 	flex-direction: column;
 	gap: 5px;

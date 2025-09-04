@@ -115,35 +115,35 @@ input {
 	gap: 4px;
 }
 
-.dispay-item-conatiner{
+.display-item-conatiner{
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
 }
 
-.dispay-item-subcontainer-spacebetween{
+.display-item-subcontainer-spacebetween{
 	display: flex;
 	justify-content: space-between;
 }
 
-.dispay-toolsandlanguages-conatiner{
+.display-toolsandlanguages-conatiner{
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
 }
 
-.dispay-toolsandlanguages-subcontainer-item{
+.display-toolsandlanguages-subcontainer-item{
 	width: 25%;
 	padding: 2px 0px;
 }
 
-.dispay-profiles-conatiner{
+.display-profiles-conatiner{
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
 }
 
-.dispay-profiles-subcontainer-item{
+.display-profiles-subcontainer-item{
 	width: 33%;
 	padding: 2px 0px;
 }

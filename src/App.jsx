@@ -1,6 +1,10 @@
 import { useState } from 'react'
 import './App.css'
 import { Page, Text, View, Document, StyleSheet, PDFDownloadLink } from "@react-pdf/renderer"
+import LocationIcon from './assets/icons/location.svg'
+import PhoneIcon from './assets/icons/phone.svg'
+import EmailIcon from './assets/icons/email.svg'
+import WebsiteIcon from './assets/icons/website.svg'
 
 function BasicsInput({ item, setItem }) {
 	function handleChange(key, value) {
@@ -34,7 +38,7 @@ function BasicsInput({ item, setItem }) {
 					</div>
 					<div>
 						<label htmlFor="input-basics-phone">Phone</label>
-						<input type="number" id="input-basics-phone" value={item.phone} onChange={(e) => {
+						<input type="text" id="input-basics-phone" value={item.phone} onChange={(e) => {
 							handleChange('phone', e.target.value);
 						}} />
 					</div>
@@ -571,11 +575,23 @@ function BasicsDisplay({ item }){
 		<div>
 			<h2>{item.name}</h2>
 			<div>{item.headline}</div>
-			<div class="dispay-basics-flexconatiner">
-				<div>{item.location}</div>
-				<div>{item.phone}</div>
-				<div>{item.email}</div>
-				<div><a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></div>
+			<div className="display-basics-flexconatiner">
+				<div className="display-icon-conatiner">
+					<div>{item.location && <img src={LocationIcon} alt="Location Icon" />}</div>
+					<div>{item.location}</div>
+				</div>
+				<div className="display-icon-conatiner">
+					<div>{item.phone && <img src={PhoneIcon} alt="Phone Icon" />}</div>
+					<div>{item.phone}</div>
+				</div>
+				<div className="display-icon-conatiner">
+					<div>{item.email && <img src={EmailIcon} alt="Email Icon" />}</div>
+					<div>{item.email}</div>
+				</div>
+				<div className="display-icon-conatiner">
+					<div>{item.website && <img src={WebsiteIcon} alt="Website Icon" />}</div>
+					<div><a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></div>
+				</div>
 			</div>
 		</div>
 	)
@@ -596,19 +612,22 @@ function ExperienceDisplay({ items }){
 		<div>
 			{items.length > 0 && <h4>Experience</h4>}
 			{items.length > 0 && <hr />}
-			<div className="dispay-item-conatiner">
+			<div className="display-item-conatiner">
 				{items.map((item) => {
 					return(
 						<div>
-							<div className="dispay-item-subcontainer-spacebetween">
+							<div className="display-item-subcontainer-spacebetween">
 								<h3>{item.company}</h3>
 								<h3>{item.daterange}</h3>
 							</div>
-							<div className="dispay-item-subcontainer-spacebetween">
+							<div className="display-item-subcontainer-spacebetween">
 								<div>{item.position}</div>
 								<div>{item.location}</div>
 							</div>
-							<div><a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></div>
+							<div className="display-icon-conatiner">
+								<div>{item.website && <img src={WebsiteIcon} alt="Website Icon" />}</div>
+								<div><a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></div>
+							</div>
 							<div>{item.summary}</div>
 						</div>
 					)
@@ -623,16 +642,19 @@ function ProjectsDisplay({ items }){
 		<div>
 			{items.length > 0 && <h4>Projects</h4>}
 			{items.length > 0 && <hr />}
-			<div className="dispay-item-conatiner">
+			<div className="display-item-conatiner">
 				{items.map((item) => {
 					return(
 						<div>
-							<div className="dispay-item-subcontainer-spacebetween">
+							<div className="display-item-subcontainer-spacebetween">
 								<h3>{item.name}</h3>
 								<h3>{item.daterange}</h3>
 							</div>
 							<div>{item.description}</div>
-							<div><a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></div>
+							<div className="display-icon-conatiner">
+								<div>{item.website && <img src={WebsiteIcon} alt="Website Icon" />}</div>
+								<div><a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></div>
+							</div>
 							<div>{item.summary}</div>
 						</div>
 					)
@@ -647,10 +669,10 @@ function ToolsAndLanguagesDisplay({ items }){
 		<div>
 			{items.length > 0 && <h4>Tools & Languages</h4>}
 			{items.length > 0 && <hr />}
-			<div className="dispay-toolsandlanguages-conatiner">
+			<div className="display-toolsandlanguages-conatiner">
 				{items.map((item) => {
 					return(
-						<div className="dispay-toolsandlanguages-subcontainer-item">
+						<div className="display-toolsandlanguages-subcontainer-item">
 							{item.name}
 						</div>
 					)
@@ -665,10 +687,10 @@ function ProfilesDisplay({ items }){
 		<div>
 			{items.length > 0 && <h4>Profiles</h4>}
 			{items.length > 0 && <hr />}
-			<div className="dispay-profiles-conatiner">
+			<div className="display-profiles-conatiner">
 				{items.map((item) => {
 					return(
-						<div className="dispay-profiles-subcontainer-item">
+						<div className="display-profiles-subcontainer-item">
 							<a href={item.website} target="_blank" rel="noopener noreferrer">{item.network}{item.username && <span>(</span>}{item.username}{item.username && <span>)</span>}</a>
 						</div>
 					)
@@ -683,17 +705,20 @@ function EducationDisplay({ items }){
 		<div>
 			{items.length > 0 && <h4>Education</h4>}
 			{items.length > 0 && <hr />}
-			<div className="dispay-item-conatiner">
+			<div className="display-item-conatiner">
 				{items.map((item) => {
 					return(
 						<div>
-							<div className="dispay-item-subcontainer-spacebetween">
+							<div className="display-item-subcontainer-spacebetween">
 								<h3>{item.institution}</h3>
 								<h3>{item.daterange}</h3>
 							</div>
 							<div>{item.typeofstudy} {item.typeofstudy && item.areaofstudy && <span>-</span>} {item.areaofstudy}</div>
 							<div>{item.score}</div>
-							<div><a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></div>
+							<div className="display-icon-conatiner">
+								<div>{item.website && <img src={WebsiteIcon} alt="Website Icon" />}</div>
+								<div><a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></div>
+							</div>
 							<div>{item.summary}</div>
 						</div>
 					)
@@ -708,16 +733,19 @@ function AwardsDisplay({ items }){
 		<div>
 			{items.length > 0 && <h4>Awards</h4>}
 			{items.length > 0 && <hr />}
-			<div className="dispay-item-conatiner">
+			<div className="display-item-conatiner">
 				{items.map((item) => {
 					return(
 						<div>
-							<div className="dispay-item-subcontainer-spacebetween">
+							<div className="display-item-subcontainer-spacebetween">
 								<h3>{item.title}</h3>
 								<h3>{item.date}</h3>
 							</div>
 							<div>{item.awarder}</div>
-							<div><a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></div>
+							<div className="display-icon-conatiner">
+								<div>{item.website && <img src={WebsiteIcon} alt="Website Icon" />}</div>
+								<div><a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></div>
+							</div>
 							<div>{item.summary}</div>
 						</div>
 					)
@@ -732,19 +760,22 @@ function VolunteeringDisplay({ items }){
 		<div>
 			{items.length > 0 && <h4>Volunteering</h4>}
 			{items.length > 0 && <hr />}
-			<div className="dispay-item-conatiner">
+			<div className="display-item-conatiner">
 				{items.map((item) => {
 					return(
 						<div>
-							<div className="dispay-item-subcontainer-spacebetween">
+							<div className="display-item-subcontainer-spacebetween">
 								<h3>{item.organization}</h3>
 								<h3>{item.daterange}</h3>
 							</div>
-							<div className="dispay-item-subcontainer-spacebetween">
+							<div className="display-item-subcontainer-spacebetween">
 								<div>{item.position}</div>
 								<div>{item.location}</div>
 							</div>
-							<div><a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></div>
+							<div className="display-icon-conatiner">
+								<div>{item.website && <img src={WebsiteIcon} alt="Website Icon" />}</div>
+								<div><a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></div>
+							</div>
 							<div>{item.summary}</div>
 						</div>
 					)

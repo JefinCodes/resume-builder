@@ -34,7 +34,7 @@ function BasicsInput({ item, setItem }) {
 					</div>
 					<div>
 						<label htmlFor="input-basics-phone">Phone</label>
-						<input type="number" id="input-basics-phone" value={item.phone} onChange={(e) => {
+						<input type="text" id="input-basics-phone" value={item.phone} onChange={(e) => {
 							handleChange('phone', e.target.value);
 						}} />
 					</div>

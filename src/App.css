@@ -104,12 +104,12 @@ input {
 	gap: 15px;
 }
 
-.dispay-basics-flexconatiner{
+.display-basics-flexconatiner{
 	display: flex;
 	gap: 15px;
 }
 
-.dispay-icon-conatiner{
+.display-icon-conatiner{
 	display: flex;
 	align-items: center;
 	gap: 4px;

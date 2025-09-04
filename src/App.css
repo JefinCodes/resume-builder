@@ -9,6 +9,7 @@ a:active{
 .application {
 	width: 100%;
 	display: flex;
+	font-family: 'Times New Roman', Times, serif;
 }
 
 .input-panel {

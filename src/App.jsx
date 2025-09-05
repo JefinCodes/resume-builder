@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import { Page, Text, View, Document, StyleSheet, PDFDownloadLink } from "@react-pdf/renderer"
+import { Page, Text, View, Document, StyleSheet, Font, Link, PDFDownloadLink } from "@react-pdf/renderer"
 import LocationIcon from './assets/icons/location.svg'
 import PhoneIcon from './assets/icons/phone.svg'
 import EmailIcon from './assets/icons/email.svg'
@@ -785,11 +785,221 @@ function VolunteeringDisplay({ items }){
 	)
 }
 
-const MyResume = () => (
+Font.register({
+	family: "Times-Roman",
+  	src: "https://fonts.cdnfonts.com/s/19810/times-new-roman.woff"
+});
+
+const styles = StyleSheet.create({
+	page: {
+		padding: 20,
+		fontFamily: "Times-Roman",
+		display: "flex",
+		flexDirection: "column",
+		gap: 15,
+	},
+	link: {
+		color: "black",
+    	textDecoration: "underline"
+	},
+	nameTitle: {
+		fontSize: 20,
+		fontWeight: "bold",
+	},
+	commonText: {
+		fontSize: 12,
+	},
+	gap15FlexContainer: {
+		display: "flex",
+		flexDirection: "row",
+		gap: 15,
+	},
+	sectionTitle: {
+		fontSize: 12,
+		fontWeight: "bold",
+	},
+	hr: {
+		borderBottomWidth: 0.3,
+    	borderBottomColor: "black",
+	},
+	itemContainer: {
+		display: "flex",
+		flexDirection: "column",
+		gap: 10,
+	},
+	spaceBetweenFlexContainer: {
+		display: "flex",
+		flexDirection: "row",
+		justifyContent: "space-between",
+	},
+	itemTitle: {
+		fontSize: 15,
+		fontWeight: "bold",
+	},
+	items4RowContainer: {
+		width: "100%",
+		display: "flex",
+		flexDirection: "row",
+		flexWrap: "wrap",
+	},
+	item4RowContainer: {
+		width: "25%",
+		padding: "2px 0px",
+	},
+});
+
+const MyResume = ({ basics, summary, experience, projects, toolsAndLanguages, profiles, education, award, volunteering }) => (
 	<Document>
-		<Page>
+		<Page size="A4" style={styles.page}>
 			<View>
-				<Text>Name</Text>
+				<Text style={styles.nameTitle}>{basics.name}</Text>
+				<Text style={styles.commonText}>{basics.headline}</Text>
+				<View style={styles.gap15FlexContainer}>
+					<View>
+						<Text style={styles.commonText}>{basics.location}</Text>
+					</View>
+					<View>
+						<Text style={styles.commonText}>{basics.phone}</Text>
+					</View>
+					<View>
+						<Text style={styles.commonText}>{basics.email}</Text>
+					</View>
+					<View>
+						<Text style={styles.commonText}><Link src={basics.website} style={styles.link}>{basics.website}</Link></Text>
+					</View>
+				</View>
+			</View>
+			<View>
+				{summary && <Text style={styles.sectionTitle}>Summary</Text>}
+				{summary && <View style={styles.hr} />}
+				<Text style={styles.commonText}>{summary}</Text>
+			</View>
+			<View>
+				{experience.length > 0 && <Text style={styles.sectionTitle}>Experience</Text>}
+				{experience.length > 0 && <View style={styles.hr} />}
+				<View style={styles.itemContainer}>
+					{experience.map((item) => {
+						return(
+							<View>
+								<View style={styles.spaceBetweenFlexContainer}>
+									<Text style={styles.itemTitle}>{item.company}</Text>
+									<Text style={styles.itemTitle}>{item.daterange}</Text>
+								</View>
+								<View style={styles.spaceBetweenFlexContainer}>
+									<Text style={styles.commonText}>{item.position}</Text>
+									<Text style={styles.commonText}>{item.location}</Text>
+								</View>
+								<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+								<Text style={styles.commonText}>{item.summary}</Text>
+							</View>
+						)
+					})}
+				</View>
+			</View>
+			<View>
+				{projects.length > 0 && <Text style={styles.sectionTitle}>Projects</Text>}
+				{projects.length > 0 && <View style={styles.hr} />}
+				<View style={styles.itemContainer}>
+					{projects.map((item) => {
+						return(
+							<View>
+								<View style={styles.spaceBetweenFlexContainer}>
+									<Text style={styles.itemTitle}>{item.name}</Text>
+									<Text style={styles.itemTitle}>{item.daterange}</Text>
+								</View>
+								<Text style={styles.commonText}>{item.description}</Text>
+								<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+								<Text style={styles.commonText}>{item.summary}</Text>
+							</View>
+						)
+					})}
+				</View>
+			</View>
+			<View>
+				{toolsAndLanguages.length > 0 && <Text style={styles.sectionTitle}>Tools & Languages</Text>}
+				{toolsAndLanguages.length > 0 && <View style={styles.hr} />}
+				<View style={styles.items4RowContainer}>
+					{toolsAndLanguages.map((item) => {
+						return(
+							<View style={styles.item4RowContainer}>
+								<Text style={styles.commonText}>{item.name}</Text>
+							</View>
+						)
+					})}
+				</View>
+			</View>
+			<View>
+				{profiles.length > 0 && <Text style={styles.sectionTitle}>Profiles</Text>}
+				{profiles.length > 0 && <View style={styles.hr} />}
+				<View style={styles.items3RowContainer}>
+					{profiles.map((item) => {
+						return(
+							<View style={styles.item3RowContainer}>
+								<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.network}{item.username && <Text style={styles.commonText}>(</Text>}{item.username}{item.username && <Text style={styles.commonText}>)</Text>}</Link></Text>
+							</View>
+						)
+					})}
+				</View>
+			</View>
+			<View>
+				{education.length > 0 && <Text style={styles.sectionTitle}>Education</Text>}
+				{education.length > 0 && <View style={styles.hr} />}
+				<View style={styles.itemContainer}>
+					{education.map((item) => {
+						return(
+							<View>
+								<View style={styles.spaceBetweenFlexContainer}>
+									<Text style={styles.itemTitle}>{item.institution}</Text>
+									<Text style={styles.itemTitle}>{item.daterange}</Text>
+								</View>
+								<Text style={styles.commonText}>{item.typeofstudy} {item.typeofstudy && item.areaofstudy && <Text style={styles.commonText}>-</Text>} {item.areaofstudy}</Text>
+								<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+								<Text style={styles.commonText}>{item.summary}</Text>
+							</View>
+						)
+					})}
+				</View>
+			</View>
+			<View>
+				{award.length > 0 && <Text style={styles.sectionTitle}>Awards</Text>}
+				{award.length > 0 && <View style={styles.hr} />}
+				<View style={styles.itemContainer}>
+					{award.map((item) => {
+						return(
+							<View>
+								<View style={styles.spaceBetweenFlexContainer}>
+									<Text style={styles.itemTitle}>{item.title}</Text>
+									<Text style={styles.itemTitle}>{item.date}</Text>
+								</View>
+								<Text style={styles.commonText}>{item.awarder}</Text>
+								<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+								<Text style={styles.commonText}>{item.summary}</Text>
+							</View>
+						)
+					})}
+				</View>
+			</View>
+			<View>
+				{volunteering.length > 0 && <Text style={styles.sectionTitle}>Volunteering</Text>}
+				{volunteering.length > 0 && <View style={styles.hr} />}
+				<View style={styles.itemContainer}>
+					{volunteering.map((item) => {
+						return(
+							<View>
+								<View style={styles.spaceBetweenFlexContainer}>
+									<Text style={styles.itemTitle}>{item.organization}</Text>
+									<Text style={styles.itemTitle}>{item.daterange}</Text>
+								</View>
+								<View style={styles.spaceBetweenFlexContainer}>
+									<Text style={styles.commonText}>{item.position}</Text>
+									<Text style={styles.commonText}>{item.location}</Text>
+								</View>
+								<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+								<Text style={styles.commonText}>{item.summary}</Text>
+							</View>
+						)
+					})}
+				</View>
 			</View>
 		</Page>
 	</Document>
@@ -891,7 +1101,7 @@ function App() {
 				<AwardsInput items={awardItems} setItems={setAwardItems} />
 				<VolunteeringInput items={volunteeringItems} setItems={setVolunteeringItems} />
 				<button id="download-button">
-					<PDFDownloadLink document={<MyResume />} fileName="resume.pdf">
+					<PDFDownloadLink document={<MyResume basics={basics} summary={summary} experience={experienceItems} projects={projectsItems} toolsAndLanguages={toolsAndLanguagesItems} profiles={profilesItems} education={educationItems} award={awardItems} volunteering={volunteeringItems} />} fileName="resume.pdf">
 						{({ loading }) => (loading? "Loading document...":"Download Resume")}
 					</PDFDownloadLink>
 				</button>

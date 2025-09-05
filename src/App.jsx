@@ -846,6 +846,16 @@ const styles = StyleSheet.create({
 		width: "25%",
 		padding: "2px 0px",
 	},
+	items3RowContainer: {
+		width: "100%",
+		display: "flex",
+		flexDirection: "row",
+		flexWrap: "wrap",
+	},
+	item3RowContainer: {
+		width: "33%",
+		padding: "2px 0px",
+	},
 });
 
 const MyResume = ({ basics, summary, experience, projects, toolsAndLanguages, profiles, education, award, volunteering }) => (

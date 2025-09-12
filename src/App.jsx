@@ -1,10 +1,14 @@
 import { useState } from 'react'
 import './App.css'
-import { Page, Text, View, Document, StyleSheet, Font, Link, PDFDownloadLink } from "@react-pdf/renderer"
+import { Page, Text, View, Document, StyleSheet, Font, Link, Image, PDFDownloadLink } from "@react-pdf/renderer"
 import LocationIcon from './assets/icons/location.svg'
 import PhoneIcon from './assets/icons/phone.svg'
 import EmailIcon from './assets/icons/email.svg'
 import WebsiteIcon from './assets/icons/website.svg'
+import LocationIconPNG from './assets/icons/location.png'
+import PhoneIconPNG from './assets/icons/phone.png'
+import EmailIconPNG from './assets/icons/email.png'
+import WebsiteIconPNG from './assets/icons/website.png'
 
 function BasicsInput({ item, setItem }) {
 	function handleChange(key, value) {
@@ -802,6 +806,17 @@ const styles = StyleSheet.create({
 		color: "black",
     	textDecoration: "underline"
 	},
+	icon: {
+		width: 10,
+		height: 10,
+		color: "#D16D6A",
+	},
+	iconContainer: {
+		display: "flex",
+		flexDirection: "row",
+		alignItems: "center",
+		gap: 4,
+	},
 	nameTitle: {
 		fontSize: 20,
 		fontWeight: "bold",
@@ -865,16 +880,20 @@ const MyResume = ({ basics, summary, experience, projects, toolsAndLanguages, pr
 				<Text style={styles.nameTitle}>{basics.name}</Text>
 				<Text style={styles.commonText}>{basics.headline}</Text>
 				<View style={styles.gap15FlexContainer}>
-					<View>
+					<View style={styles.iconContainer}>
+						{basics.location && <Image src={LocationIconPNG} style={styles.icon} />}
 						<Text style={styles.commonText}>{basics.location}</Text>
 					</View>
-					<View>
+					<View style={styles.iconContainer}>
+						{basics.phone && <Image src={PhoneIconPNG} style={styles.icon} />}
 						<Text style={styles.commonText}>{basics.phone}</Text>
 					</View>
-					<View>
+					<View style={styles.iconContainer}>
+						{basics.email && <Image src={EmailIconPNG} style={styles.icon} />}
 						<Text style={styles.commonText}>{basics.email}</Text>
 					</View>
-					<View>
+					<View style={styles.iconContainer}>
+						{basics.website && <Image src={WebsiteIconPNG} style={styles.icon} />}
 						<Text style={styles.commonText}><Link src={basics.website} style={styles.link}>{basics.website}</Link></Text>
 					</View>
 				</View>
@@ -899,7 +918,10 @@ const MyResume = ({ basics, summary, experience, projects, toolsAndLanguages, pr
 									<Text style={styles.commonText}>{item.position}</Text>
 									<Text style={styles.commonText}>{item.location}</Text>
 								</View>
-								<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+								<View style={styles.iconContainer}>
+									{item.website && <Image src={WebsiteIconPNG} style={styles.icon} />}
+									<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+								</View>
 								<Text style={styles.commonText}>{item.summary}</Text>
 							</View>
 						)
@@ -918,7 +940,10 @@ const MyResume = ({ basics, summary, experience, projects, toolsAndLanguages, pr
 									<Text style={styles.itemTitle}>{item.daterange}</Text>
 								</View>
 								<Text style={styles.commonText}>{item.description}</Text>
-								<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+								<View style={styles.iconContainer}>
+									{item.website && <Image src={WebsiteIconPNG} style={styles.icon} />}
+									<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+								</View>
 								<Text style={styles.commonText}>{item.summary}</Text>
 							</View>
 						)
@@ -963,7 +988,10 @@ const MyResume = ({ basics, summary, experience, projects, toolsAndLanguages, pr
 									<Text style={styles.itemTitle}>{item.daterange}</Text>
 								</View>
 								<Text style={styles.commonText}>{item.typeofstudy} {item.typeofstudy && item.areaofstudy && <Text style={styles.commonText}>-</Text>} {item.areaofstudy}</Text>
-								<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+								<View style={styles.iconContainer}>
+									{item.website && <Image src={WebsiteIconPNG} style={styles.icon} />}
+									<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+								</View>
 								<Text style={styles.commonText}>{item.summary}</Text>
 							</View>
 						)
@@ -982,7 +1010,10 @@ const MyResume = ({ basics, summary, experience, projects, toolsAndLanguages, pr
 									<Text style={styles.itemTitle}>{item.date}</Text>
 								</View>
 								<Text style={styles.commonText}>{item.awarder}</Text>
-								<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+								<View style={styles.iconContainer}>
+									{item.website && <Image src={WebsiteIconPNG} style={styles.icon} />}
+									<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+								</View>
 								<Text style={styles.commonText}>{item.summary}</Text>
 							</View>
 						)
@@ -1004,7 +1035,10 @@ const MyResume = ({ basics, summary, experience, projects, toolsAndLanguages, pr
 									<Text style={styles.commonText}>{item.position}</Text>
 									<Text style={styles.commonText}>{item.location}</Text>
 								</View>
-								<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+								<View style={styles.iconContainer}>
+									{item.website && <Image src={WebsiteIconPNG} style={styles.icon} />}
+									<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+								</View>
 								<Text style={styles.commonText}>{item.summary}</Text>
 							</View>
 						)

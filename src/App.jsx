@@ -1120,16 +1120,14 @@ const MyResume = ({ basics, summary, experience, projects, toolsAndLanguages, pr
 )
 
 function App() {
-	const [basics, setBasics] = useState([
-		{
-			name: "",
-			headline: "",
-			location: "",
-			phone: "",
-			email: "",
-			website: "",
-		}
-	]);
+	const [basics, setBasics] = useState({
+		name: "",
+		headline: "",
+		location: "",
+		phone: "",
+		email: "",
+		website: "",
+	});
 
 	const [summary, setSummary] = useState("");
 

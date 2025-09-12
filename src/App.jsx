@@ -964,175 +964,191 @@ const MyResume = ({ basics, summary, experience, projects, toolsAndLanguages, pr
 					}
 				</View>
 			</View>
-			<View>
-				{summary && <Text style={styles.sectionTitle}>Summary</Text>}
-				{summary && <View style={styles.hr} />}
-				<Text style={styles.commonText}>{summary}</Text>
-			</View>
-			<View>
-				{experience.length > 0 && <Text style={styles.sectionTitle}>Experience</Text>}
-				{experience.length > 0 && <View style={styles.hr} />}
-				<View style={styles.itemContainer}>
-					{experience.map((item) => {
-						return(
-							<View>
-								<View style={styles.spaceBetweenFlexContainer}>
-									<Text style={styles.itemTitle}>{item.company}</Text>
-									<Text style={styles.itemTitle}>{item.daterange}</Text>
-								</View>
-								<View style={styles.spaceBetweenFlexContainer}>
-									<Text style={styles.commonText}>{item.position}</Text>
-									<Text style={styles.commonText}>{item.location}</Text>
-								</View>
-								{item.website &&
-									<View style={styles.iconContainer}>
-										<Image src={WebsiteIconPNG} style={styles.icon} />
-										<View style={styles.underline}>
-											<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
-										</View>
+			{summary &&
+				<View>
+					<Text style={styles.sectionTitle}>Summary</Text>
+					<View style={styles.hr} />
+					<Text style={styles.commonText}>{summary}</Text>
+				</View>
+			}
+			{experience.length > 0 &&
+				<View>
+					<Text style={styles.sectionTitle}>Experience</Text>
+					<View style={styles.hr} />
+					<View style={styles.itemContainer}>
+						{experience.map((item) => {
+							return(
+								<View>
+									<View style={styles.spaceBetweenFlexContainer}>
+										<Text style={styles.itemTitle}>{item.company}</Text>
+										<Text style={styles.itemTitle}>{item.daterange}</Text>
 									</View>
-								}
-								<Text style={styles.commonText}>{item.summary}</Text>
-							</View>
-						)
-					})}
-				</View>
-			</View>
-			<View>
-				{projects.length > 0 && <Text style={styles.sectionTitle}>Projects</Text>}
-				{projects.length > 0 && <View style={styles.hr} />}
-				<View style={styles.itemContainer}>
-					{projects.map((item) => {
-						return(
-							<View>
-								<View style={styles.spaceBetweenFlexContainer}>
-									<Text style={styles.itemTitle}>{item.name}</Text>
-									<Text style={styles.itemTitle}>{item.daterange}</Text>
-								</View>
-								<Text style={styles.commonText}>{item.description}</Text>
-								{item.website &&
-									<View style={styles.iconContainer}>
-										<Image src={WebsiteIconPNG} style={styles.icon} />
-										<View style={styles.underline}>
-											<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
-										</View>
+									<View style={styles.spaceBetweenFlexContainer}>
+										<Text style={styles.commonText}>{item.position}</Text>
+										<Text style={styles.commonText}>{item.location}</Text>
 									</View>
-								}
-								<Text style={styles.commonText}>{item.summary}</Text>
-							</View>
-						)
-					})}
-				</View>
-			</View>
-			<View>
-				{toolsAndLanguages.length > 0 && <Text style={styles.sectionTitle}>Tools & Languages</Text>}
-				{toolsAndLanguages.length > 0 && <View style={styles.hr} />}
-				<View style={styles.items4RowContainer}>
-					{toolsAndLanguages.map((item) => {
-						return(
-							<View style={styles.item4RowContainer}>
-								<Text style={styles.commonText}>{item.name}</Text>
-							</View>
-						)
-					})}
-				</View>
-			</View>
-			<View>
-				{profiles.length > 0 && <Text style={styles.sectionTitle}>Profiles</Text>}
-				{profiles.length > 0 && <View style={styles.hr} />}
-				<View style={styles.items3RowContainer}>
-					{profiles.map((item) => {
-						return(
-							<View style={styles.item3RowContainer}>
-								<View style={[styles.underline, styles.inlineBlock]}>
-									<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.network}{item.username && <Text style={styles.commonText}>(</Text>}{item.username}{item.username && <Text style={styles.commonText}>)</Text>}</Link></Text>
-								</View>
-							</View>
-						)
-					})}
-				</View>
-			</View>
-			<View>
-				{education.length > 0 && <Text style={styles.sectionTitle}>Education</Text>}
-				{education.length > 0 && <View style={styles.hr} />}
-				<View style={styles.itemContainer}>
-					{education.map((item) => {
-						return(
-							<View>
-								<View style={styles.spaceBetweenFlexContainer}>
-									<Text style={styles.itemTitle}>{item.institution}</Text>
-									<Text style={styles.itemTitle}>{item.daterange}</Text>
-								</View>
-								<Text style={styles.commonText}>{item.typeofstudy} {item.typeofstudy && item.areaofstudy && <Text style={styles.commonText}>-</Text>} {item.areaofstudy}</Text>
-								{item.website &&
-									<View style={styles.iconContainer}>
-										<Image src={WebsiteIconPNG} style={styles.icon} />
-										<View style={styles.underline}>
-											<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+									{item.website &&
+										<View style={styles.iconContainer}>
+											<Image src={WebsiteIconPNG} style={styles.icon} />
+											<View style={styles.underline}>
+												<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+											</View>
 										</View>
-									</View>
-								}
-								<Text style={styles.commonText}>{item.summary}</Text>
-							</View>
-						)
-					})}
-				</View>
-			</View>
-			<View>
-				{award.length > 0 && <Text style={styles.sectionTitle}>Awards</Text>}
-				{award.length > 0 && <View style={styles.hr} />}
-				<View style={styles.itemContainer}>
-					{award.map((item) => {
-						return(
-							<View>
-								<View style={styles.spaceBetweenFlexContainer}>
-									<Text style={styles.itemTitle}>{item.title}</Text>
-									<Text style={styles.itemTitle}>{item.date}</Text>
+									}
+									<Text style={styles.commonText}>{item.summary}</Text>
 								</View>
-								<Text style={styles.commonText}>{item.awarder}</Text>
-								{item.website &&
-									<View style={styles.iconContainer}>
-										<Image src={WebsiteIconPNG} style={styles.icon} />
-										<View style={styles.underline}>
-											<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+							)
+						})}
+					</View>
+				</View>
+			}
+			{projects.length > 0 &&
+				<View>
+					<Text style={styles.sectionTitle}>Projects</Text>
+					<View style={styles.hr} />
+					<View style={styles.itemContainer}>
+						{projects.map((item) => {
+							return(
+								<View>
+									<View style={styles.spaceBetweenFlexContainer}>
+										<Text style={styles.itemTitle}>{item.name}</Text>
+										<Text style={styles.itemTitle}>{item.daterange}</Text>
+									</View>
+									<Text style={styles.commonText}>{item.description}</Text>
+									{item.website &&
+										<View style={styles.iconContainer}>
+											<Image src={WebsiteIconPNG} style={styles.icon} />
+											<View style={styles.underline}>
+												<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+											</View>
 										</View>
-									</View>
-								}
-								<Text style={styles.commonText}>{item.summary}</Text>
-							</View>
-						)
-					})}
+									}
+									<Text style={styles.commonText}>{item.summary}</Text>
+								</View>
+							)
+						})}
+					</View>
 				</View>
-			</View>
-			<View>
-				{volunteering.length > 0 && <Text style={styles.sectionTitle}>Volunteering</Text>}
-				{volunteering.length > 0 && <View style={styles.hr} />}
-				<View style={styles.itemContainer}>
-					{volunteering.map((item) => {
-						return(
-							<View>
-								<View style={styles.spaceBetweenFlexContainer}>
-									<Text style={styles.itemTitle}>{item.organization}</Text>
-									<Text style={styles.itemTitle}>{item.daterange}</Text>
+			}
+			{toolsAndLanguages.length > 0 &&
+				<View>
+					<Text style={styles.sectionTitle}>Tools & Languages</Text>
+					<View style={styles.hr} />
+					<View style={styles.items4RowContainer}>
+						{toolsAndLanguages.map((item) => {
+							return(
+								<View style={styles.item4RowContainer}>
+									<Text style={styles.commonText}>{item.name}</Text>
 								</View>
-								<View style={styles.spaceBetweenFlexContainer}>
-									<Text style={styles.commonText}>{item.position}</Text>
-									<Text style={styles.commonText}>{item.location}</Text>
+							)
+						})}
+					</View>
+				</View>
+			}
+			{profiles.length > 0 &&
+				<View>
+					<Text style={styles.sectionTitle}>Profiles</Text>
+					<View style={styles.hr} />
+					<View style={styles.items3RowContainer}>
+						{profiles.map((item) => {
+							return(
+								<View style={styles.item3RowContainer}>
+									<View style={[styles.underline, styles.inlineBlock]}>
+										<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.network}{item.username && <Text style={styles.commonText}>(</Text>}{item.username}{item.username && <Text style={styles.commonText}>)</Text>}</Link></Text>
+									</View>
 								</View>
-								{item.website &&
-									<View style={styles.iconContainer}>
-										<Image src={WebsiteIconPNG} style={styles.icon} />
-										<View style={styles.underline}>
-											<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+							)
+						})}
+					</View>
+				</View>
+			}
+			{education.length > 0 &&
+				<View>
+					<Text style={styles.sectionTitle}>Education</Text>
+					<View style={styles.hr} />
+					<View style={styles.itemContainer}>
+						{education.map((item) => {
+							return(
+								<View>
+									<View style={styles.spaceBetweenFlexContainer}>
+										<Text style={styles.itemTitle}>{item.institution}</Text>
+										<Text style={styles.itemTitle}>{item.daterange}</Text>
+									</View>
+									<Text style={styles.commonText}>{item.typeofstudy} {item.typeofstudy && item.areaofstudy && <Text style={styles.commonText}>-</Text>} {item.areaofstudy}</Text>
+									{item.website &&
+										<View style={styles.iconContainer}>
+											<Image src={WebsiteIconPNG} style={styles.icon} />
+											<View style={styles.underline}>
+												<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+											</View>
 										</View>
-									</View>
-								}
-								<Text style={styles.commonText}>{item.summary}</Text>
-							</View>
-						)
-					})}
+									}
+									<Text style={styles.commonText}>{item.summary}</Text>
+								</View>
+							)
+						})}
+					</View>
 				</View>
-			</View>
+			}
+			{award.length > 0 &&
+				<View>
+					<Text style={styles.sectionTitle}>Awards</Text>
+					<View style={styles.hr} />
+					<View style={styles.itemContainer}>
+						{award.map((item) => {
+							return(
+								<View>
+									<View style={styles.spaceBetweenFlexContainer}>
+										<Text style={styles.itemTitle}>{item.title}</Text>
+										<Text style={styles.itemTitle}>{item.date}</Text>
+									</View>
+									<Text style={styles.commonText}>{item.awarder}</Text>
+									{item.website &&
+										<View style={styles.iconContainer}>
+											<Image src={WebsiteIconPNG} style={styles.icon} />
+											<View style={styles.underline}>
+												<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+											</View>
+										</View>
+									}
+									<Text style={styles.commonText}>{item.summary}</Text>
+								</View>
+							)
+						})}
+					</View>
+				</View>
+			}
+			{volunteering.length > 0 &&
+				<View>
+					<Text style={styles.sectionTitle}>Volunteering</Text>
+					<View style={styles.hr} />
+					<View style={styles.itemContainer}>
+						{volunteering.map((item) => {
+							return(
+								<View>
+									<View style={styles.spaceBetweenFlexContainer}>
+										<Text style={styles.itemTitle}>{item.organization}</Text>
+										<Text style={styles.itemTitle}>{item.daterange}</Text>
+									</View>
+									<View style={styles.spaceBetweenFlexContainer}>
+										<Text style={styles.commonText}>{item.position}</Text>
+										<Text style={styles.commonText}>{item.location}</Text>
+									</View>
+									{item.website &&
+										<View style={styles.iconContainer}>
+											<Image src={WebsiteIconPNG} style={styles.icon} />
+											<View style={styles.underline}>
+												<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+											</View>
+										</View>
+									}
+									<Text style={styles.commonText}>{item.summary}</Text>
+								</View>
+							)
+						})}
+					</View>
+				</View>
+			}
 		</Page>
 	</Document>
 )

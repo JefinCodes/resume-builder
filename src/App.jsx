@@ -976,9 +976,9 @@ const MyResume = ({ basics, summary, experience, projects, toolsAndLanguages, pr
 					<Text style={styles.sectionTitle}>Experience</Text>
 					<View style={styles.hr} />
 					<View style={styles.itemContainer}>
-						{experience.map((item) => {
+						{experience.map((item, index) => {
 							return(
-								<View>
+								<View key={index}>
 									<View style={styles.spaceBetweenFlexContainer}>
 										<Text style={styles.itemTitle}>{item.company}</Text>
 										<Text style={styles.itemTitle}>{item.daterange}</Text>
@@ -1007,9 +1007,9 @@ const MyResume = ({ basics, summary, experience, projects, toolsAndLanguages, pr
 					<Text style={styles.sectionTitle}>Projects</Text>
 					<View style={styles.hr} />
 					<View style={styles.itemContainer}>
-						{projects.map((item) => {
+						{projects.map((item, index) => {
 							return(
-								<View>
+								<View key={index}>
 									<View style={styles.spaceBetweenFlexContainer}>
 										<Text style={styles.itemTitle}>{item.name}</Text>
 										<Text style={styles.itemTitle}>{item.daterange}</Text>
@@ -1035,9 +1035,9 @@ const MyResume = ({ basics, summary, experience, projects, toolsAndLanguages, pr
 					<Text style={styles.sectionTitle}>Tools & Languages</Text>
 					<View style={styles.hr} />
 					<View style={styles.items4RowContainer}>
-						{toolsAndLanguages.map((item) => {
+						{toolsAndLanguages.map((item, index) => {
 							return(
-								<View style={styles.item4RowContainer}>
+								<View key={index} style={styles.item4RowContainer}>
 									<Text style={styles.commonText}>{item.name}</Text>
 								</View>
 							)
@@ -1050,9 +1050,9 @@ const MyResume = ({ basics, summary, experience, projects, toolsAndLanguages, pr
 					<Text style={styles.sectionTitle}>Profiles</Text>
 					<View style={styles.hr} />
 					<View style={styles.items3RowContainer}>
-						{profiles.map((item) => {
+						{profiles.map((item, index) => {
 							return(
-								<View style={styles.item3RowContainer}>
+								<View key={index} style={styles.item3RowContainer}>
 									<View style={[styles.underline, styles.inlineBlock]}>
 										<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.network}{item.username && <Text style={styles.commonText}>(</Text>}{item.username}{item.username && <Text style={styles.commonText}>)</Text>}</Link></Text>
 									</View>
@@ -1067,9 +1067,9 @@ const MyResume = ({ basics, summary, experience, projects, toolsAndLanguages, pr
 					<Text style={styles.sectionTitle}>Education</Text>
 					<View style={styles.hr} />
 					<View style={styles.itemContainer}>
-						{education.map((item) => {
+						{education.map((item, index) => {
 							return(
-								<View>
+								<View key={index}>
 									<View style={styles.spaceBetweenFlexContainer}>
 										<Text style={styles.itemTitle}>{item.institution}</Text>
 										<Text style={styles.itemTitle}>{item.daterange}</Text>
@@ -1095,9 +1095,9 @@ const MyResume = ({ basics, summary, experience, projects, toolsAndLanguages, pr
 					<Text style={styles.sectionTitle}>Awards</Text>
 					<View style={styles.hr} />
 					<View style={styles.itemContainer}>
-						{award.map((item) => {
+						{award.map((item, index) => {
 							return(
-								<View>
+								<View key={index}>
 									<View style={styles.spaceBetweenFlexContainer}>
 										<Text style={styles.itemTitle}>{item.title}</Text>
 										<Text style={styles.itemTitle}>{item.date}</Text>
@@ -1123,9 +1123,9 @@ const MyResume = ({ basics, summary, experience, projects, toolsAndLanguages, pr
 					<Text style={styles.sectionTitle}>Volunteering</Text>
 					<View style={styles.hr} />
 					<View style={styles.itemContainer}>
-						{volunteering.map((item) => {
+						{volunteering.map((item, index) => {
 							return(
-								<View>
+								<View key={index}>
 									<View style={styles.spaceBetweenFlexContainer}>
 										<Text style={styles.itemTitle}>{item.organization}</Text>
 										<Text style={styles.itemTitle}>{item.daterange}</Text>

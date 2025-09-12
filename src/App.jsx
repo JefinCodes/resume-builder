@@ -110,7 +110,7 @@ function ExperienceInput({ items, setItems }) {
 			<div id="input-experience-itembox" className="input-itembox">
 				{items.map((item, index) => {
 					return (
-						<div className="input-experience-item input-item">
+						<div key={index} className="input-experience-item input-item">
 							<div>
 								<label htmlFor="input-experience-company">Company</label>
 								<input type="text" id="input-experience-company" value={item.company} onChange={(e) => {
@@ -189,7 +189,7 @@ function ProjectsInput({ items, setItems }) {
 			<div id="input-projects-itembox" className="input-itembox">
 				{items.map((item, index) => {
 					return (
-						<div className="input-projects-item input-item">
+						<div key={index} className="input-projects-item input-item">
 							<div>
 								<label htmlFor="input-projects-name">Name</label>
 								<input type="text" id="input-projects-name" value={item.name} onChange={(e) => {
@@ -258,7 +258,7 @@ function ToolsAndLanguagesInput({ items, setItems }) {
 			<div id="input-toolsandlanguages-itembox" className="input-itembox">
 				{items.map((item, index) => {
 					return (
-						<div className="input-toolsandlanguages-item input-item">
+						<div key={index} className="input-toolsandlanguages-item input-item">
 							<label htmlFor="input-toolsandlanguages-name">Name</label>
 							<input type="text" id="input-toolsandlanguages-name" value={item.name} onChange={(e) => {
 								handleChange(index, 'name', e.target.value);
@@ -303,7 +303,7 @@ function ProfilesInput({ items, setItems }) {
 			<div id="input-profiles-itembox" className="input-itembox">
 				{items.map((item, index) => {
 					return (
-						<div className="input-profiles-item input-item">
+						<div key={index} className="input-profiles-item input-item">
 							<div>
 								<label htmlFor="input-profiles-network">Network</label>
 								<input type="text" id="input-profiles-network" value={item.network} onChange={(e) => {
@@ -366,7 +366,7 @@ function EducationInput({ items, setItems }) {
 			<div id="input-education-itembox" className="input-itembox">
 				{items.map((item, index) => {
 					return (
-						<div className="input-education-item input-item">
+						<div key={index} className="input-education-item input-item">
 							<div>
 								<label htmlFor="input-education-institution">Institution</label>
 								<input type="text" id="input-education-institution" value={item.institution} onChange={(e) => {
@@ -451,7 +451,7 @@ function AwardsInput({ items, setItems }) {
 			<div id="input-awards-itembox" className="input-itembox">
 				{items.map((item, index) => {
 					return (
-						<div className="input-awards-item input-item">
+						<div key={index} className="input-awards-item input-item">
 							<div>
 								<label htmlFor="input-awards-title">Title</label>
 								<input type="text" id="input-awards-title" value={item.title} onChange={(e) => {
@@ -525,7 +525,7 @@ function VolunteeringInput({ items, setItems }) {
 			<div id="input-volunteering-itembox" className="input-itembox">
 				{items.map((item, index) => {
 					return (
-						<div className="input-volunteering-item input-item">
+						<div key={index} className="input-volunteering-item input-item">
 							<div>
 								<label htmlFor="input-volunteering-organization">Organization</label>
 								<input type="text" id="input-volunteering-organization" value={item.organization} onChange={(e) => {
@@ -633,9 +633,9 @@ function ExperienceDisplay({ items }){
 			<h4>Experience</h4>
 			<hr />
 			<div className="display-item-conatiner">
-				{items.map((item) => {
+				{items.map((item, index) => {
 					return(
-						<div>
+						<div key={index}>
 							<div className="display-item-subcontainer-spacebetween">
 								<h3>{item.company}</h3>
 								<h3>{item.daterange}</h3>
@@ -669,9 +669,9 @@ function ProjectsDisplay({ items }){
 			<h4>Projects</h4>
 			<hr />
 			<div className="display-item-conatiner">
-				{items.map((item) => {
+				{items.map((item, index) => {
 					return(
-						<div>
+						<div key={index}>
 							<div className="display-item-subcontainer-spacebetween">
 								<h3>{item.name}</h3>
 								<h3>{item.daterange}</h3>
@@ -702,9 +702,9 @@ function ToolsAndLanguagesDisplay({ items }){
 			<h4>Tools & Languages</h4>
 			<hr />
 			<div className="display-toolsandlanguages-conatiner">
-				{items.map((item) => {
+				{items.map((item, index) => {
 					return(
-						<div className="display-toolsandlanguages-subcontainer-item">
+						<div key={index} className="display-toolsandlanguages-subcontainer-item">
 							{item.name}
 						</div>
 					)
@@ -724,9 +724,9 @@ function ProfilesDisplay({ items }){
 			<h4>Profiles</h4>
 			<hr />
 			<div className="display-profiles-conatiner">
-				{items.map((item) => {
+				{items.map((item, index) => {
 					return(
-						<div className="display-profiles-subcontainer-item">
+						<div key={index} className="display-profiles-subcontainer-item">
 							<a href={item.website} target="_blank" rel="noopener noreferrer">{item.network}{item.username && <span>(</span>}{item.username}{item.username && <span>)</span>}</a>
 						</div>
 					)
@@ -746,9 +746,9 @@ function EducationDisplay({ items }){
 			<h4>Education</h4>
 			<hr />
 			<div className="display-item-conatiner">
-				{items.map((item) => {
+				{items.map((item, index) => {
 					return(
-						<div>
+						<div key={index}>
 							<div className="display-item-subcontainer-spacebetween">
 								<h3>{item.institution}</h3>
 								<h3>{item.daterange}</h3>
@@ -780,9 +780,9 @@ function AwardsDisplay({ items }){
 			<h4>Awards</h4>
 			<hr />
 			<div className="display-item-conatiner">
-				{items.map((item) => {
+				{items.map((item, index) => {
 					return(
-						<div>
+						<div key={index}>
 							<div className="display-item-subcontainer-spacebetween">
 								<h3>{item.title}</h3>
 								<h3>{item.date}</h3>
@@ -813,9 +813,9 @@ function VolunteeringDisplay({ items }){
 			<h4>Volunteering</h4>
 			<hr />
 			<div className="display-item-conatiner">
-				{items.map((item) => {
+				{items.map((item, index) => {
 					return(
-						<div>
+						<div key={index}>
 							<div className="display-item-subcontainer-spacebetween">
 								<h3>{item.organization}</h3>
 								<h3>{item.daterange}</h3>

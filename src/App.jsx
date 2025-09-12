@@ -610,20 +610,28 @@ function BasicsDisplay({ item }){
 }
 
 function SummaryDisplay({ summary }){
+	if(!summary){
+		return null;
+	}
+
 	return(
 		<div>
-			{summary && <h4>Summary</h4>}
-			{summary && <hr />}
+			<h4>Summary</h4>
+			<hr />
 			{summary}
 		</div>
 	)
 }
 
 function ExperienceDisplay({ items }){
+	if(items.length <= 0){
+		return null;
+	}
+
 	return(
 		<div>
-			{items.length > 0 && <h4>Experience</h4>}
-			{items.length > 0 && <hr />}
+			<h4>Experience</h4>
+			<hr />
 			<div className="display-item-conatiner">
 				{items.map((item) => {
 					return(
@@ -652,10 +660,14 @@ function ExperienceDisplay({ items }){
 }
 
 function ProjectsDisplay({ items }){
+	if(items.length <= 0){
+		return null;
+	}
+
 	return(
 		<div>
-			{items.length > 0 && <h4>Projects</h4>}
-			{items.length > 0 && <hr />}
+			<h4>Projects</h4>
+			<hr />
 			<div className="display-item-conatiner">
 				{items.map((item) => {
 					return(
@@ -681,10 +693,14 @@ function ProjectsDisplay({ items }){
 }
 
 function ToolsAndLanguagesDisplay({ items }){
+	if(items.length <= 0){
+		return null;
+	}
+
 	return(
 		<div>
-			{items.length > 0 && <h4>Tools & Languages</h4>}
-			{items.length > 0 && <hr />}
+			<h4>Tools & Languages</h4>
+			<hr />
 			<div className="display-toolsandlanguages-conatiner">
 				{items.map((item) => {
 					return(
@@ -699,10 +715,14 @@ function ToolsAndLanguagesDisplay({ items }){
 }
 
 function ProfilesDisplay({ items }){
+	if(items.length <= 0){
+		return null;
+	}
+
 	return(
 		<div>
-			{items.length > 0 && <h4>Profiles</h4>}
-			{items.length > 0 && <hr />}
+			<h4>Profiles</h4>
+			<hr />
 			<div className="display-profiles-conatiner">
 				{items.map((item) => {
 					return(
@@ -717,10 +737,14 @@ function ProfilesDisplay({ items }){
 }
 
 function EducationDisplay({ items }){
+	if(items.length <= 0){
+		return null;
+	}
+
 	return(
 		<div>
-			{items.length > 0 && <h4>Education</h4>}
-			{items.length > 0 && <hr />}
+			<h4>Education</h4>
+			<hr />
 			<div className="display-item-conatiner">
 				{items.map((item) => {
 					return(
@@ -747,10 +771,14 @@ function EducationDisplay({ items }){
 }
 
 function AwardsDisplay({ items }){
+	if(items.length <= 0){
+		return null;
+	}
+
 	return(
 		<div>
-			{items.length > 0 && <h4>Awards</h4>}
-			{items.length > 0 && <hr />}
+			<h4>Awards</h4>
+			<hr />
 			<div className="display-item-conatiner">
 				{items.map((item) => {
 					return(
@@ -776,10 +804,14 @@ function AwardsDisplay({ items }){
 }
 
 function VolunteeringDisplay({ items }){
+	if(items.length <= 0){
+		return null;
+	}
+
 	return(
 		<div>
-			{items.length > 0 && <h4>Volunteering</h4>}
-			{items.length > 0 && <hr />}
+			<h4>Volunteering</h4>
+			<hr />
 			<div className="display-item-conatiner">
 				{items.map((item) => {
 					return(

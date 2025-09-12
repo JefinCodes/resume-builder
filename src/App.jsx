@@ -804,7 +804,13 @@ const styles = StyleSheet.create({
 	},
 	link: {
 		color: "black",
-    	textDecoration: "underline"
+		textDecoration: "none",
+	},
+	underline: {
+		borderBottomWidth: 0.5,
+	},
+	inlineBlock: {
+		alignSelf: "flex-start",
 	},
 	icon: {
 		width: 10,
@@ -894,7 +900,9 @@ const MyResume = ({ basics, summary, experience, projects, toolsAndLanguages, pr
 					</View>
 					<View style={styles.iconContainer}>
 						{basics.website && <Image src={WebsiteIconPNG} style={styles.icon} />}
-						<Text style={styles.commonText}><Link src={basics.website} style={styles.link}>{basics.website}</Link></Text>
+						<View style={styles.underline}>
+							<Text style={styles.commonText}><Link src={basics.website} style={styles.link}>{basics.website}</Link></Text>
+						</View>
 					</View>
 				</View>
 			</View>
@@ -920,7 +928,9 @@ const MyResume = ({ basics, summary, experience, projects, toolsAndLanguages, pr
 								</View>
 								<View style={styles.iconContainer}>
 									{item.website && <Image src={WebsiteIconPNG} style={styles.icon} />}
-									<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+									<View style={styles.underline}>
+										<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+									</View>
 								</View>
 								<Text style={styles.commonText}>{item.summary}</Text>
 							</View>
@@ -942,7 +952,9 @@ const MyResume = ({ basics, summary, experience, projects, toolsAndLanguages, pr
 								<Text style={styles.commonText}>{item.description}</Text>
 								<View style={styles.iconContainer}>
 									{item.website && <Image src={WebsiteIconPNG} style={styles.icon} />}
-									<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+									<View style={styles.underline}>
+										<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+									</View>
 								</View>
 								<Text style={styles.commonText}>{item.summary}</Text>
 							</View>
@@ -970,7 +982,9 @@ const MyResume = ({ basics, summary, experience, projects, toolsAndLanguages, pr
 					{profiles.map((item) => {
 						return(
 							<View style={styles.item3RowContainer}>
-								<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.network}{item.username && <Text style={styles.commonText}>(</Text>}{item.username}{item.username && <Text style={styles.commonText}>)</Text>}</Link></Text>
+								<View style={[styles.underline, styles.inlineBlock]}>
+									<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.network}{item.username && <Text style={styles.commonText}>(</Text>}{item.username}{item.username && <Text style={styles.commonText}>)</Text>}</Link></Text>
+								</View>
 							</View>
 						)
 					})}
@@ -990,7 +1004,9 @@ const MyResume = ({ basics, summary, experience, projects, toolsAndLanguages, pr
 								<Text style={styles.commonText}>{item.typeofstudy} {item.typeofstudy && item.areaofstudy && <Text style={styles.commonText}>-</Text>} {item.areaofstudy}</Text>
 								<View style={styles.iconContainer}>
 									{item.website && <Image src={WebsiteIconPNG} style={styles.icon} />}
-									<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+									<View style={styles.underline}>
+										<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+									</View>
 								</View>
 								<Text style={styles.commonText}>{item.summary}</Text>
 							</View>
@@ -1012,7 +1028,9 @@ const MyResume = ({ basics, summary, experience, projects, toolsAndLanguages, pr
 								<Text style={styles.commonText}>{item.awarder}</Text>
 								<View style={styles.iconContainer}>
 									{item.website && <Image src={WebsiteIconPNG} style={styles.icon} />}
-									<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+									<View style={styles.underline}>
+										<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+									</View>
 								</View>
 								<Text style={styles.commonText}>{item.summary}</Text>
 							</View>
@@ -1037,7 +1055,9 @@ const MyResume = ({ basics, summary, experience, projects, toolsAndLanguages, pr
 								</View>
 								<View style={styles.iconContainer}>
 									{item.website && <Image src={WebsiteIconPNG} style={styles.icon} />}
-									<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+									<View style={styles.underline}>
+										<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+									</View>
 								</View>
 								<Text style={styles.commonText}>{item.summary}</Text>
 							</View>

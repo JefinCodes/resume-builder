@@ -1240,7 +1240,7 @@ function App() {
 		if(generate){
 			timer = setTimeout(() => {
 				setGenerate(false);
-			}, 8000);
+			}, 4000);
 		}
 	}, [generate]);
 

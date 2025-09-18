@@ -1233,10 +1233,22 @@ function App() {
 		}
 	]);
 
+	const[generate, setGenerate] = useState(false);
+
 
 	return (
 		<div className="application">
 			<div className="input-panel">
+				<button onClick={() => setGenerate(true)}>
+					Generate Resume
+				</button>
+				{ generate &&
+					<button id="download-button">
+						<PDFDownloadLink document={<MyResume basics={basics} summary={summary} experience={experienceItems} projects={projectsItems} toolsAndLanguages={toolsAndLanguagesItems} profiles={profilesItems} education={educationItems} award={awardItems} volunteering={volunteeringItems} />} fileName="resume.pdf">
+							{({ loading }) => (loading? "Loading document...":"Download PDF")}
+						</PDFDownloadLink>
+					</button>
+				}
 				<BasicsInput item={basics} setItem={setBasics} />
 				<SummaryInput summary={summary} setSummary={setSummary} />
 				<ExperienceInput items={experienceItems} setItems={setExperienceItems} />
@@ -1246,11 +1258,6 @@ function App() {
 				<EducationInput items={educationItems} setItems={setEducationItems} />
 				<AwardsInput items={awardItems} setItems={setAwardItems} />
 				<VolunteeringInput items={volunteeringItems} setItems={setVolunteeringItems} />
-				<button id="download-button">
-					<PDFDownloadLink document={<MyResume basics={basics} summary={summary} experience={experienceItems} projects={projectsItems} toolsAndLanguages={toolsAndLanguagesItems} profiles={profilesItems} education={educationItems} award={awardItems} volunteering={volunteeringItems} />} fileName="resume.pdf">
-						{({ loading }) => (loading? "Loading document...":"Download Resume")}
-					</PDFDownloadLink>
-				</button>
 			</div>
 			<div className="display-panel">
 				<div className="canvas">

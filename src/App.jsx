@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import { Page, Text, View, Document, StyleSheet, Font, Link, Image, PDFDownloadLink } from "@react-pdf/renderer"
 import LocationIcon from './assets/icons/location.svg'
@@ -1235,6 +1235,14 @@ function App() {
 
 	const[generate, setGenerate] = useState(false);
 
+	useEffect(() => {
+		let timer;
+		if(generate){
+			timer = setTimeout(() => {
+				setGenerate(false);
+			}, 8000);
+		}
+	}, [generate]);
 
 	return (
 		<div className="application">

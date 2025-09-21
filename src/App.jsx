@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import { Page, Text, View, Document, StyleSheet, Font, Link, Image, PDFDownloadLink } from "@react-pdf/renderer"
 import LocationIcon from './assets/icons/location.svg'
@@ -110,7 +110,7 @@ function ExperienceInput({ items, setItems }) {
 			<div id="input-experience-itembox" className="input-itembox">
 				{items.map((item, index) => {
 					return (
-						<div className="input-experience-item input-item">
+						<div key={index} className="input-experience-item input-item">
 							<div>
 								<label htmlFor="input-experience-company">Company</label>
 								<input type="text" id="input-experience-company" value={item.company} onChange={(e) => {
@@ -189,7 +189,7 @@ function ProjectsInput({ items, setItems }) {
 			<div id="input-projects-itembox" className="input-itembox">
 				{items.map((item, index) => {
 					return (
-						<div className="input-projects-item input-item">
+						<div key={index} className="input-projects-item input-item">
 							<div>
 								<label htmlFor="input-projects-name">Name</label>
 								<input type="text" id="input-projects-name" value={item.name} onChange={(e) => {
@@ -258,7 +258,7 @@ function ToolsAndLanguagesInput({ items, setItems }) {
 			<div id="input-toolsandlanguages-itembox" className="input-itembox">
 				{items.map((item, index) => {
 					return (
-						<div className="input-toolsandlanguages-item input-item">
+						<div key={index} className="input-toolsandlanguages-item input-item">
 							<label htmlFor="input-toolsandlanguages-name">Name</label>
 							<input type="text" id="input-toolsandlanguages-name" value={item.name} onChange={(e) => {
 								handleChange(index, 'name', e.target.value);
@@ -303,7 +303,7 @@ function ProfilesInput({ items, setItems }) {
 			<div id="input-profiles-itembox" className="input-itembox">
 				{items.map((item, index) => {
 					return (
-						<div className="input-profiles-item input-item">
+						<div key={index} className="input-profiles-item input-item">
 							<div>
 								<label htmlFor="input-profiles-network">Network</label>
 								<input type="text" id="input-profiles-network" value={item.network} onChange={(e) => {
@@ -366,7 +366,7 @@ function EducationInput({ items, setItems }) {
 			<div id="input-education-itembox" className="input-itembox">
 				{items.map((item, index) => {
 					return (
-						<div className="input-education-item input-item">
+						<div key={index} className="input-education-item input-item">
 							<div>
 								<label htmlFor="input-education-institution">Institution</label>
 								<input type="text" id="input-education-institution" value={item.institution} onChange={(e) => {
@@ -451,7 +451,7 @@ function AwardsInput({ items, setItems }) {
 			<div id="input-awards-itembox" className="input-itembox">
 				{items.map((item, index) => {
 					return (
-						<div className="input-awards-item input-item">
+						<div key={index} className="input-awards-item input-item">
 							<div>
 								<label htmlFor="input-awards-title">Title</label>
 								<input type="text" id="input-awards-title" value={item.title} onChange={(e) => {
@@ -525,7 +525,7 @@ function VolunteeringInput({ items, setItems }) {
 			<div id="input-volunteering-itembox" className="input-itembox">
 				{items.map((item, index) => {
 					return (
-						<div className="input-volunteering-item input-item">
+						<div key={index} className="input-volunteering-item input-item">
 							<div>
 								<label htmlFor="input-volunteering-organization">Organization</label>
 								<input type="text" id="input-volunteering-organization" value={item.organization} onChange={(e) => {
@@ -580,46 +580,62 @@ function BasicsDisplay({ item }){
 			<h2>{item.name}</h2>
 			<div>{item.headline}</div>
 			<div className="display-basics-flexconatiner">
-				<div className="display-icon-conatiner">
-					<div>{item.location && <img src={LocationIcon} alt="Location Icon" />}</div>
-					<div>{item.location}</div>
-				</div>
-				<div className="display-icon-conatiner">
-					<div>{item.phone && <img src={PhoneIcon} alt="Phone Icon" />}</div>
-					<div>{item.phone}</div>
-				</div>
-				<div className="display-icon-conatiner">
-					<div>{item.email && <img src={EmailIcon} alt="Email Icon" />}</div>
-					<div>{item.email}</div>
-				</div>
-				<div className="display-icon-conatiner">
-					<div>{item.website && <img src={WebsiteIcon} alt="Website Icon" />}</div>
-					<div><a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></div>
-				</div>
+				{item.location && 
+					<div className="display-icon-conatiner">
+						<div><img src={LocationIcon} alt="Location Icon" /></div>
+						<div>{item.location}</div>
+					</div>
+				}
+				{item.phone &&
+					<div className="display-icon-conatiner">
+						<div><img src={PhoneIcon} alt="Phone Icon" /></div>
+						<div>{item.phone}</div>
+					</div>
+				}
+				{item.email &&
+					<div className="display-icon-conatiner">
+						<div><img src={EmailIcon} alt="Email Icon" /></div>
+						<div>{item.email}</div>
+					</div>
+				}
+				{item.website && 
+					<div className="display-icon-conatiner">
+						<div><img src={WebsiteIcon} alt="Website Icon" /></div>
+						<div><a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></div>
+					</div>
+				}
 			</div>
 		</div>
 	)
 }
 
 function SummaryDisplay({ summary }){
+	if(!summary){
+		return null;
+	}
+
 	return(
 		<div>
-			{summary && <h4>Summary</h4>}
-			{summary && <hr />}
+			<h4>Summary</h4>
+			<hr />
 			{summary}
 		</div>
 	)
 }
 
 function ExperienceDisplay({ items }){
+	if(items.length <= 0){
+		return null;
+	}
+
 	return(
 		<div>
-			{items.length > 0 && <h4>Experience</h4>}
-			{items.length > 0 && <hr />}
+			<h4>Experience</h4>
+			<hr />
 			<div className="display-item-conatiner">
-				{items.map((item) => {
+				{items.map((item, index) => {
 					return(
-						<div>
+						<div key={index}>
 							<div className="display-item-subcontainer-spacebetween">
 								<h3>{item.company}</h3>
 								<h3>{item.daterange}</h3>
@@ -628,10 +644,12 @@ function ExperienceDisplay({ items }){
 								<div>{item.position}</div>
 								<div>{item.location}</div>
 							</div>
-							<div className="display-icon-conatiner">
-								<div>{item.website && <img src={WebsiteIcon} alt="Website Icon" />}</div>
-								<div><a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></div>
-							</div>
+							{item.website &&
+								<div className="display-icon-conatiner">
+									<div><img src={WebsiteIcon} alt="Website Icon" /></div>
+									<div><a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></div>
+								</div>
+							}
 							<div>{item.summary}</div>
 						</div>
 					)
@@ -642,23 +660,29 @@ function ExperienceDisplay({ items }){
 }
 
 function ProjectsDisplay({ items }){
+	if(items.length <= 0){
+		return null;
+	}
+
 	return(
 		<div>
-			{items.length > 0 && <h4>Projects</h4>}
-			{items.length > 0 && <hr />}
+			<h4>Projects</h4>
+			<hr />
 			<div className="display-item-conatiner">
-				{items.map((item) => {
+				{items.map((item, index) => {
 					return(
-						<div>
+						<div key={index}>
 							<div className="display-item-subcontainer-spacebetween">
 								<h3>{item.name}</h3>
 								<h3>{item.daterange}</h3>
 							</div>
 							<div>{item.description}</div>
-							<div className="display-icon-conatiner">
-								<div>{item.website && <img src={WebsiteIcon} alt="Website Icon" />}</div>
-								<div><a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></div>
-							</div>
+							{item.website && 
+								<div className="display-icon-conatiner">
+									<div><img src={WebsiteIcon} alt="Website Icon" /></div>
+									<div><a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></div>
+								</div>
+							}
 							<div>{item.summary}</div>
 						</div>
 					)
@@ -669,14 +693,18 @@ function ProjectsDisplay({ items }){
 }
 
 function ToolsAndLanguagesDisplay({ items }){
+	if(items.length <= 0){
+		return null;
+	}
+
 	return(
 		<div>
-			{items.length > 0 && <h4>Tools & Languages</h4>}
-			{items.length > 0 && <hr />}
+			<h4>Tools & Languages</h4>
+			<hr />
 			<div className="display-toolsandlanguages-conatiner">
-				{items.map((item) => {
+				{items.map((item, index) => {
 					return(
-						<div className="display-toolsandlanguages-subcontainer-item">
+						<div key={index} className="display-toolsandlanguages-subcontainer-item">
 							{item.name}
 						</div>
 					)
@@ -687,14 +715,18 @@ function ToolsAndLanguagesDisplay({ items }){
 }
 
 function ProfilesDisplay({ items }){
+	if(items.length <= 0){
+		return null;
+	}
+
 	return(
 		<div>
-			{items.length > 0 && <h4>Profiles</h4>}
-			{items.length > 0 && <hr />}
+			<h4>Profiles</h4>
+			<hr />
 			<div className="display-profiles-conatiner">
-				{items.map((item) => {
+				{items.map((item, index) => {
 					return(
-						<div className="display-profiles-subcontainer-item">
+						<div key={index} className="display-profiles-subcontainer-item">
 							<a href={item.website} target="_blank" rel="noopener noreferrer">{item.network}{item.username && <span>(</span>}{item.username}{item.username && <span>)</span>}</a>
 						</div>
 					)
@@ -705,24 +737,30 @@ function ProfilesDisplay({ items }){
 }
 
 function EducationDisplay({ items }){
+	if(items.length <= 0){
+		return null;
+	}
+
 	return(
 		<div>
-			{items.length > 0 && <h4>Education</h4>}
-			{items.length > 0 && <hr />}
+			<h4>Education</h4>
+			<hr />
 			<div className="display-item-conatiner">
-				{items.map((item) => {
+				{items.map((item, index) => {
 					return(
-						<div>
+						<div key={index}>
 							<div className="display-item-subcontainer-spacebetween">
 								<h3>{item.institution}</h3>
 								<h3>{item.daterange}</h3>
 							</div>
 							<div>{item.typeofstudy} {item.typeofstudy && item.areaofstudy && <span>-</span>} {item.areaofstudy}</div>
 							<div>{item.score}</div>
-							<div className="display-icon-conatiner">
-								<div>{item.website && <img src={WebsiteIcon} alt="Website Icon" />}</div>
-								<div><a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></div>
-							</div>
+							{item.website &&
+								<div className="display-icon-conatiner">
+									<div><img src={WebsiteIcon} alt="Website Icon" /></div>
+									<div><a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></div>
+								</div>
+							}
 							<div>{item.summary}</div>
 						</div>
 					)
@@ -733,23 +771,29 @@ function EducationDisplay({ items }){
 }
 
 function AwardsDisplay({ items }){
+	if(items.length <= 0){
+		return null;
+	}
+
 	return(
 		<div>
-			{items.length > 0 && <h4>Awards</h4>}
-			{items.length > 0 && <hr />}
+			<h4>Awards</h4>
+			<hr />
 			<div className="display-item-conatiner">
-				{items.map((item) => {
+				{items.map((item, index) => {
 					return(
-						<div>
+						<div key={index}>
 							<div className="display-item-subcontainer-spacebetween">
 								<h3>{item.title}</h3>
 								<h3>{item.date}</h3>
 							</div>
 							<div>{item.awarder}</div>
-							<div className="display-icon-conatiner">
-								<div>{item.website && <img src={WebsiteIcon} alt="Website Icon" />}</div>
-								<div><a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></div>
-							</div>
+							{item.website &&
+								<div className="display-icon-conatiner">
+									<div><img src={WebsiteIcon} alt="Website Icon" /></div>
+									<div><a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></div>
+								</div>
+							}
 							<div>{item.summary}</div>
 						</div>
 					)
@@ -760,14 +804,18 @@ function AwardsDisplay({ items }){
 }
 
 function VolunteeringDisplay({ items }){
+	if(items.length <= 0){
+		return null;
+	}
+
 	return(
 		<div>
-			{items.length > 0 && <h4>Volunteering</h4>}
-			{items.length > 0 && <hr />}
+			<h4>Volunteering</h4>
+			<hr />
 			<div className="display-item-conatiner">
-				{items.map((item) => {
+				{items.map((item, index) => {
 					return(
-						<div>
+						<div key={index}>
 							<div className="display-item-subcontainer-spacebetween">
 								<h3>{item.organization}</h3>
 								<h3>{item.daterange}</h3>
@@ -776,10 +824,12 @@ function VolunteeringDisplay({ items }){
 								<div>{item.position}</div>
 								<div>{item.location}</div>
 							</div>
-							<div className="display-icon-conatiner">
-								<div>{item.website && <img src={WebsiteIcon} alt="Website Icon" />}</div>
-								<div><a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></div>
-							</div>
+							{item.website &&
+								<div className="display-icon-conatiner">
+									<div><img src={WebsiteIcon} alt="Website Icon" /></div>
+									<div><a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></div>
+								</div>
+							}
 							<div>{item.summary}</div>
 						</div>
 					)
@@ -886,200 +936,232 @@ const MyResume = ({ basics, summary, experience, projects, toolsAndLanguages, pr
 				<Text style={styles.nameTitle}>{basics.name}</Text>
 				<Text style={styles.commonText}>{basics.headline}</Text>
 				<View style={styles.gap15FlexContainer}>
-					<View style={styles.iconContainer}>
-						{basics.location && <Image src={LocationIconPNG} style={styles.icon} />}
-						<Text style={styles.commonText}>{basics.location}</Text>
-					</View>
-					<View style={styles.iconContainer}>
-						{basics.phone && <Image src={PhoneIconPNG} style={styles.icon} />}
-						<Text style={styles.commonText}>{basics.phone}</Text>
-					</View>
-					<View style={styles.iconContainer}>
-						{basics.email && <Image src={EmailIconPNG} style={styles.icon} />}
-						<Text style={styles.commonText}>{basics.email}</Text>
-					</View>
-					<View style={styles.iconContainer}>
-						{basics.website && <Image src={WebsiteIconPNG} style={styles.icon} />}
-						<View style={styles.underline}>
-							<Text style={styles.commonText}><Link src={basics.website} style={styles.link}>{basics.website}</Link></Text>
+					{basics.location &&
+						<View style={styles.iconContainer}>
+							<Image src={LocationIconPNG} style={styles.icon} />
+							<Text style={styles.commonText}>{basics.location}</Text>
 						</View>
+					}
+					{basics.phone &&
+						<View style={styles.iconContainer}>
+							<Image src={PhoneIconPNG} style={styles.icon} />
+							<Text style={styles.commonText}>{basics.phone}</Text>
+						</View>
+					}
+					{basics.email &&
+						<View style={styles.iconContainer}>
+							<Image src={EmailIconPNG} style={styles.icon} />
+							<Text style={styles.commonText}>{basics.email}</Text>
+						</View>
+					}
+					{basics.website &&
+						<View style={styles.iconContainer}>
+							<Image src={WebsiteIconPNG} style={styles.icon} />
+							<View style={styles.underline}>
+								<Text style={styles.commonText}><Link src={basics.website} style={styles.link}>{basics.website}</Link></Text>
+							</View>
+						</View>
+					}
+				</View>
+			</View>
+			{summary &&
+				<View>
+					<Text style={styles.sectionTitle}>Summary</Text>
+					<View style={styles.hr} />
+					<Text style={styles.commonText}>{summary}</Text>
+				</View>
+			}
+			{experience.length > 0 &&
+				<View>
+					<Text style={styles.sectionTitle}>Experience</Text>
+					<View style={styles.hr} />
+					<View style={styles.itemContainer}>
+						{experience.map((item, index) => {
+							return(
+								<View key={index}>
+									<View style={styles.spaceBetweenFlexContainer}>
+										<Text style={styles.itemTitle}>{item.company}</Text>
+										<Text style={styles.itemTitle}>{item.daterange}</Text>
+									</View>
+									<View style={styles.spaceBetweenFlexContainer}>
+										<Text style={styles.commonText}>{item.position}</Text>
+										<Text style={styles.commonText}>{item.location}</Text>
+									</View>
+									{item.website &&
+										<View style={styles.iconContainer}>
+											<Image src={WebsiteIconPNG} style={styles.icon} />
+											<View style={styles.underline}>
+												<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+											</View>
+										</View>
+									}
+									<Text style={styles.commonText}>{item.summary}</Text>
+								</View>
+							)
+						})}
 					</View>
 				</View>
-			</View>
-			<View>
-				{summary && <Text style={styles.sectionTitle}>Summary</Text>}
-				{summary && <View style={styles.hr} />}
-				<Text style={styles.commonText}>{summary}</Text>
-			</View>
-			<View>
-				{experience.length > 0 && <Text style={styles.sectionTitle}>Experience</Text>}
-				{experience.length > 0 && <View style={styles.hr} />}
-				<View style={styles.itemContainer}>
-					{experience.map((item) => {
-						return(
-							<View>
-								<View style={styles.spaceBetweenFlexContainer}>
-									<Text style={styles.itemTitle}>{item.company}</Text>
-									<Text style={styles.itemTitle}>{item.daterange}</Text>
+			}
+			{projects.length > 0 &&
+				<View>
+					<Text style={styles.sectionTitle}>Projects</Text>
+					<View style={styles.hr} />
+					<View style={styles.itemContainer}>
+						{projects.map((item, index) => {
+							return(
+								<View key={index}>
+									<View style={styles.spaceBetweenFlexContainer}>
+										<Text style={styles.itemTitle}>{item.name}</Text>
+										<Text style={styles.itemTitle}>{item.daterange}</Text>
+									</View>
+									<Text style={styles.commonText}>{item.description}</Text>
+									{item.website &&
+										<View style={styles.iconContainer}>
+											<Image src={WebsiteIconPNG} style={styles.icon} />
+											<View style={styles.underline}>
+												<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+											</View>
+										</View>
+									}
+									<Text style={styles.commonText}>{item.summary}</Text>
 								</View>
-								<View style={styles.spaceBetweenFlexContainer}>
-									<Text style={styles.commonText}>{item.position}</Text>
-									<Text style={styles.commonText}>{item.location}</Text>
+							)
+						})}
+					</View>
+				</View>
+			}
+			{toolsAndLanguages.length > 0 &&
+				<View>
+					<Text style={styles.sectionTitle}>Tools & Languages</Text>
+					<View style={styles.hr} />
+					<View style={styles.items4RowContainer}>
+						{toolsAndLanguages.map((item, index) => {
+							return(
+								<View key={index} style={styles.item4RowContainer}>
+									<Text style={styles.commonText}>{item.name}</Text>
 								</View>
-								<View style={styles.iconContainer}>
-									{item.website && <Image src={WebsiteIconPNG} style={styles.icon} />}
-									<View style={styles.underline}>
-										<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+							)
+						})}
+					</View>
+				</View>
+			}
+			{profiles.length > 0 &&
+				<View>
+					<Text style={styles.sectionTitle}>Profiles</Text>
+					<View style={styles.hr} />
+					<View style={styles.items3RowContainer}>
+						{profiles.map((item, index) => {
+							return(
+								<View key={index} style={styles.item3RowContainer}>
+									<View style={[styles.underline, styles.inlineBlock]}>
+										<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.network}{item.username && <Text style={styles.commonText}>(</Text>}{item.username}{item.username && <Text style={styles.commonText}>)</Text>}</Link></Text>
 									</View>
 								</View>
-								<Text style={styles.commonText}>{item.summary}</Text>
-							</View>
-						)
-					})}
+							)
+						})}
+					</View>
 				</View>
-			</View>
-			<View>
-				{projects.length > 0 && <Text style={styles.sectionTitle}>Projects</Text>}
-				{projects.length > 0 && <View style={styles.hr} />}
-				<View style={styles.itemContainer}>
-					{projects.map((item) => {
-						return(
-							<View>
-								<View style={styles.spaceBetweenFlexContainer}>
-									<Text style={styles.itemTitle}>{item.name}</Text>
-									<Text style={styles.itemTitle}>{item.daterange}</Text>
-								</View>
-								<Text style={styles.commonText}>{item.description}</Text>
-								<View style={styles.iconContainer}>
-									{item.website && <Image src={WebsiteIconPNG} style={styles.icon} />}
-									<View style={styles.underline}>
-										<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+			}
+			{education.length > 0 &&
+				<View>
+					<Text style={styles.sectionTitle}>Education</Text>
+					<View style={styles.hr} />
+					<View style={styles.itemContainer}>
+						{education.map((item, index) => {
+							return(
+								<View key={index}>
+									<View style={styles.spaceBetweenFlexContainer}>
+										<Text style={styles.itemTitle}>{item.institution}</Text>
+										<Text style={styles.itemTitle}>{item.daterange}</Text>
 									</View>
+									<Text style={styles.commonText}>{item.typeofstudy} {item.typeofstudy && item.areaofstudy && <Text style={styles.commonText}>-</Text>} {item.areaofstudy}</Text>
+									{item.website &&
+										<View style={styles.iconContainer}>
+											<Image src={WebsiteIconPNG} style={styles.icon} />
+											<View style={styles.underline}>
+												<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+											</View>
+										</View>
+									}
+									<Text style={styles.commonText}>{item.summary}</Text>
 								</View>
-								<Text style={styles.commonText}>{item.summary}</Text>
-							</View>
-						)
-					})}
+							)
+						})}
+					</View>
 				</View>
-			</View>
-			<View>
-				{toolsAndLanguages.length > 0 && <Text style={styles.sectionTitle}>Tools & Languages</Text>}
-				{toolsAndLanguages.length > 0 && <View style={styles.hr} />}
-				<View style={styles.items4RowContainer}>
-					{toolsAndLanguages.map((item) => {
-						return(
-							<View style={styles.item4RowContainer}>
-								<Text style={styles.commonText}>{item.name}</Text>
-							</View>
-						)
-					})}
-				</View>
-			</View>
-			<View>
-				{profiles.length > 0 && <Text style={styles.sectionTitle}>Profiles</Text>}
-				{profiles.length > 0 && <View style={styles.hr} />}
-				<View style={styles.items3RowContainer}>
-					{profiles.map((item) => {
-						return(
-							<View style={styles.item3RowContainer}>
-								<View style={[styles.underline, styles.inlineBlock]}>
-									<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.network}{item.username && <Text style={styles.commonText}>(</Text>}{item.username}{item.username && <Text style={styles.commonText}>)</Text>}</Link></Text>
-								</View>
-							</View>
-						)
-					})}
-				</View>
-			</View>
-			<View>
-				{education.length > 0 && <Text style={styles.sectionTitle}>Education</Text>}
-				{education.length > 0 && <View style={styles.hr} />}
-				<View style={styles.itemContainer}>
-					{education.map((item) => {
-						return(
-							<View>
-								<View style={styles.spaceBetweenFlexContainer}>
-									<Text style={styles.itemTitle}>{item.institution}</Text>
-									<Text style={styles.itemTitle}>{item.daterange}</Text>
-								</View>
-								<Text style={styles.commonText}>{item.typeofstudy} {item.typeofstudy && item.areaofstudy && <Text style={styles.commonText}>-</Text>} {item.areaofstudy}</Text>
-								<View style={styles.iconContainer}>
-									{item.website && <Image src={WebsiteIconPNG} style={styles.icon} />}
-									<View style={styles.underline}>
-										<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+			}
+			{award.length > 0 &&
+				<View>
+					<Text style={styles.sectionTitle}>Awards</Text>
+					<View style={styles.hr} />
+					<View style={styles.itemContainer}>
+						{award.map((item, index) => {
+							return(
+								<View key={index}>
+									<View style={styles.spaceBetweenFlexContainer}>
+										<Text style={styles.itemTitle}>{item.title}</Text>
+										<Text style={styles.itemTitle}>{item.date}</Text>
 									</View>
+									<Text style={styles.commonText}>{item.awarder}</Text>
+									{item.website &&
+										<View style={styles.iconContainer}>
+											<Image src={WebsiteIconPNG} style={styles.icon} />
+											<View style={styles.underline}>
+												<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+											</View>
+										</View>
+									}
+									<Text style={styles.commonText}>{item.summary}</Text>
 								</View>
-								<Text style={styles.commonText}>{item.summary}</Text>
-							</View>
-						)
-					})}
+							)
+						})}
+					</View>
 				</View>
-			</View>
-			<View>
-				{award.length > 0 && <Text style={styles.sectionTitle}>Awards</Text>}
-				{award.length > 0 && <View style={styles.hr} />}
-				<View style={styles.itemContainer}>
-					{award.map((item) => {
-						return(
-							<View>
-								<View style={styles.spaceBetweenFlexContainer}>
-									<Text style={styles.itemTitle}>{item.title}</Text>
-									<Text style={styles.itemTitle}>{item.date}</Text>
-								</View>
-								<Text style={styles.commonText}>{item.awarder}</Text>
-								<View style={styles.iconContainer}>
-									{item.website && <Image src={WebsiteIconPNG} style={styles.icon} />}
-									<View style={styles.underline}>
-										<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+			}
+			{volunteering.length > 0 &&
+				<View>
+					<Text style={styles.sectionTitle}>Volunteering</Text>
+					<View style={styles.hr} />
+					<View style={styles.itemContainer}>
+						{volunteering.map((item, index) => {
+							return(
+								<View key={index}>
+									<View style={styles.spaceBetweenFlexContainer}>
+										<Text style={styles.itemTitle}>{item.organization}</Text>
+										<Text style={styles.itemTitle}>{item.daterange}</Text>
 									</View>
-								</View>
-								<Text style={styles.commonText}>{item.summary}</Text>
-							</View>
-						)
-					})}
-				</View>
-			</View>
-			<View>
-				{volunteering.length > 0 && <Text style={styles.sectionTitle}>Volunteering</Text>}
-				{volunteering.length > 0 && <View style={styles.hr} />}
-				<View style={styles.itemContainer}>
-					{volunteering.map((item) => {
-						return(
-							<View>
-								<View style={styles.spaceBetweenFlexContainer}>
-									<Text style={styles.itemTitle}>{item.organization}</Text>
-									<Text style={styles.itemTitle}>{item.daterange}</Text>
-								</View>
-								<View style={styles.spaceBetweenFlexContainer}>
-									<Text style={styles.commonText}>{item.position}</Text>
-									<Text style={styles.commonText}>{item.location}</Text>
-								</View>
-								<View style={styles.iconContainer}>
-									{item.website && <Image src={WebsiteIconPNG} style={styles.icon} />}
-									<View style={styles.underline}>
-										<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+									<View style={styles.spaceBetweenFlexContainer}>
+										<Text style={styles.commonText}>{item.position}</Text>
+										<Text style={styles.commonText}>{item.location}</Text>
 									</View>
+									{item.website &&
+										<View style={styles.iconContainer}>
+											<Image src={WebsiteIconPNG} style={styles.icon} />
+											<View style={styles.underline}>
+												<Text style={styles.commonText}><Link src={item.website} style={styles.link}>{item.website}</Link></Text>
+											</View>
+										</View>
+									}
+									<Text style={styles.commonText}>{item.summary}</Text>
 								</View>
-								<Text style={styles.commonText}>{item.summary}</Text>
-							</View>
-						)
-					})}
+							)
+						})}
+					</View>
 				</View>
-			</View>
+			}
 		</Page>
 	</Document>
 )
 
 function App() {
-	const [basics, setBasics] = useState([
-		{
-			name: "",
-			headline: "",
-			location: "",
-			phone: "",
-			email: "",
-			website: "",
-		}
-	]);
+	const [basics, setBasics] = useState({
+		name: "",
+		headline: "",
+		location: "",
+		phone: "",
+		email: "",
+		website: "",
+	});
 
 	const [summary, setSummary] = useState("");
 
@@ -1151,10 +1233,30 @@ function App() {
 		}
 	]);
 
+	const[generate, setGenerate] = useState(false);
+
+	useEffect(() => {
+		let timer;
+		if(generate){
+			timer = setTimeout(() => {
+				setGenerate(false);
+			}, 4000);
+		}
+	}, [generate]);
 
 	return (
 		<div className="application">
 			<div className="input-panel">
+				<button onClick={() => setGenerate(true)}>
+					Generate Resume
+				</button>
+				{ generate &&
+					<button id="download-button">
+						<PDFDownloadLink document={<MyResume basics={basics} summary={summary} experience={experienceItems} projects={projectsItems} toolsAndLanguages={toolsAndLanguagesItems} profiles={profilesItems} education={educationItems} award={awardItems} volunteering={volunteeringItems} />} fileName="resume.pdf">
+							{({ loading }) => (loading? "Loading document...":"Download PDF")}
+						</PDFDownloadLink>
+					</button>
+				}
 				<BasicsInput item={basics} setItem={setBasics} />
 				<SummaryInput summary={summary} setSummary={setSummary} />
 				<ExperienceInput items={experienceItems} setItems={setExperienceItems} />
@@ -1164,11 +1266,6 @@ function App() {
 				<EducationInput items={educationItems} setItems={setEducationItems} />
 				<AwardsInput items={awardItems} setItems={setAwardItems} />
 				<VolunteeringInput items={volunteeringItems} setItems={setVolunteeringItems} />
-				<button id="download-button">
-					<PDFDownloadLink document={<MyResume basics={basics} summary={summary} experience={experienceItems} projects={projectsItems} toolsAndLanguages={toolsAndLanguagesItems} profiles={profilesItems} education={educationItems} award={awardItems} volunteering={volunteeringItems} />} fileName="resume.pdf">
-						{({ loading }) => (loading? "Loading document...":"Download Resume")}
-					</PDFDownloadLink>
-				</button>
 			</div>
 			<div className="display-panel">
 				<div className="canvas">

@@ -1155,81 +1155,119 @@ const MyResume = ({ basics, summary, experience, projects, toolsAndLanguages, pr
 
 function App() {
 	const [basics, setBasics] = useState({
-		name: "",
-		headline: "",
-		location: "",
-		phone: "",
-		email: "",
+		name: "Jefin Joji",
+		headline: "Python & JavaScript Developer | Aspiring Full Stack Developer | Learning React",
+		location: "India",
+		phone: "9747692467",
+		email: "jefincodes@gmail.com",
 		website: "",
 	});
 
-	const [summary, setSummary] = useState("");
+	const [summary, setSummary] = useState("Passionate about web development and open source contributions");
 
 	const [experienceItems, setExperienceItems] = useState([
 		{
-			company: "",
-			position: "",
-			daterange: "",
-			location: "",
-			website: "",
-			summary: "",
+			company: "IEEE SB NITC",
+			position: "Web Developer Intern",
+			daterange: "March 2025 - JULY 2025",
+			location: "Remote",
+			website: "https://github.com/IEEE-SB-NITC/NSRC",
+			summary: " Worked in a team of 6 members to build websites for IEEE Student Branch NITC using HTML, CSS and React",
 		}
 	]);
 
 	const [projectsItems, setProjectsItems] = useState([
 		{
-			name: "",
+			name: "Customized Blockchain Creator (In Progress)",
 			description: "",
-			daterange: "",
-			website: "",
-			summary: "",
+			daterange: " May 2025 - Present",
+			website: "https://github.com/Rahan-M/BlockChain_Prototype",
+			summary: "Working as a team of 2 to build a customizable blockchain from scratch using Python",
+		},
+		{
+			name: "Resume Builder",
+			description: "",
+			daterange: "July 2025 - September 2025",
+			website: "https://github.com/JefinCodes/resume-builder",
+			summary: "Built using React. Used React PDF Renderer library for generating PDF",
 		}
 	]);
 
 	const [toolsAndLanguagesItems, setToolsAndLanguagesItems] = useState([
 		{
-			name: "",
-		}
+			name: "React",
+		},
+		{
+			name: "JavaScript",
+		},
+		{
+			name: "HTML",
+		},
+		{
+			name: "CSS",
+		},
+		{
+			name: "Python",
+		},
+		{
+			name: "C",
+		},
+		{
+			name: "C++",
+		},
+		{
+			name: "Git",
+		},
 	]);
 
 	const [profilesItems, setProfilesItems] = useState([
 		{
-			network: "",
-			username: "",
-			website: "",
-		}
+			network: "GitHub",
+			username: "JefinCodes",
+			website: "https://github.com/JefinCodes",
+		},
+		{
+			network: "LinkedIn",
+			username: "Jefin Joji",
+			website: "https://in.linkedin.com/in/jefin-joji-659354313",
+		},
+		{
+			network: "LeetCode",
+			username: "JefinCodes",
+			website: "https://leetcode.com/u/jefincodes/",
+		},
 	]);
 
 	const [educationItems, setEducationItems] = useState([
 		{
-			institution: "",
-			typeofstudy: "",
-			areaofstudy: "",
-			score: "",
-			daterange: "",
+			institution: "National Institute of Technology, Calicut",
+			typeofstudy: "Btech",
+			areaofstudy: "Computer Science & Engineering",
+			score: "CGPA - 8.5/10",
+			daterange: "June 2024 - April 2028",
 			website: "",
 			summary: "",
 		}
 	]);
 
-	const [awardItems, setAwardItems] = useState([
-		{
-			title: "",
-			awarder: "",
-			date: "",
-			website: "",
-			summary: "",
-		}
-	]);
+	const [awardItems, setAwardItems] = useState([]);
 
 	const [volunteeringItems, setVolunteeringItems] = useState([
 		{
-			organization: "",
-			position: "",
-			daterange: "",
+			organization: "FOSSCell",
+			position: "Event Coordinator",
+			daterange: " May 2025 - Present",
 			location: "",
 			website: "",
 			summary: "",
+		},
+		{
+			organization: "IEEE YESS",
+			position: "Program Committee Member",
+			daterange: "August 2025 - September 2025",
+			location: "",
+			website: "",
+			summary: "As a program committee member I had to call companies for expo, bring event ideas, plan events and conduct them",
 		}
 	]);
 
